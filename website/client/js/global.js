@@ -2,7 +2,7 @@
 // GLOBAL.JS — Shared utilities for LALA website (White Theme)
 // ============================================================
 
-const API_BASE = 'http://localhost:5000';
+const API_BASE = 'https://lalatechprogramminglanguage.onrender.com';
 
 // ---- NAVBAR ----
 (function initNavbar() {

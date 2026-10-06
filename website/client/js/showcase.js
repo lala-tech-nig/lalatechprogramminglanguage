@@ -2,7 +2,7 @@
 // SHOWCASE PAGE JAVASCRIPT
 // ============================================================
 
-const API_SERVER = 'http://localhost:5000';
+const API_SERVER = 'https://lalatechprogramminglanguage.onrender.com';
 let currentPage = 1;
 let currentDialect = 'all';
 let currentSort = 'newest';

@@ -2,7 +2,7 @@
 // COMMUNITY PAGE JAVASCRIPT
 // ============================================================
 
-const API_SERVER = 'http://localhost:5000';
+const API_SERVER = 'https://lalatechprogramminglanguage.onrender.com';
 let currentType = 'all';
 let currentSort = 'newest';
 let currentStatus = 'all';
