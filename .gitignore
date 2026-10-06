@@ -71,8 +71,10 @@ next-env.d.ts
 # ------------------------------------------------------------
 # REACT / VITE / WEB BUILD OUTPUT — ANY FOLDER
 # ------------------------------------------------------------
-dist/
-**/dist/
+# dist/
+# **/dist/
+# dist/
+# **/dist/
 
 build/
 **/build/
