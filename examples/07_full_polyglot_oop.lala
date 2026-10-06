@@ -1,0 +1,47 @@
+// Example 7: Full Polyglot Object-Oriented and Multilingual Synthesis
+// Combining Classes, Objects, Multilingual Dialects, and Cross-FFI Calls
+
+class BankAccount {
+    init(owner, balance) {
+        this.owner = owner
+        this.balance = balance
+    }
+
+    deposit(amount) {
+        this.balance += amount
+        print("Deposited " + amount + " to account of " + this.owner)
+        return this.balance
+    }
+
+    withdraw(amount) {
+        if (amount > this.balance) {
+            print("Insufficient funds for " + this.owner)
+            return false
+        }
+        this.balance -= amount
+        print("Withdrew " + amount + " from account of " + this.owner)
+        return true
+    }
+
+    summary() {
+        return {
+            owner: this.owner,
+            balance: this.balance,
+            timestamp: js.Date.now()
+        }
+    }
+}
+
+let account = new BankAccount("Adewale", 5000)
+account.deposit(2500)
+account.withdraw(1200)
+
+let info = account.summary()
+print("Account Summary Object:", info)
+
+// Using Python for financial compound interest calculation
+import py "math" as pymath
+let rate = 0.08
+let years = 5
+let futureValue = account.balance * pymath.pow(1 + rate, years)
+print("Projected Future Value in 5 years (via Python math.pow):", futureValue)

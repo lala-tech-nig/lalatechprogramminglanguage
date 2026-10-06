@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LALA Community — Ideas, Bugs & Feature Requests</title>
+  <meta name="description" content="LALA community board. Share ideas, report bugs with screenshots, and request features for future versions. Anonymous posting supported." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/community.css" />
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><div class="logo-mark">L</div><span class="logo-text">LALA</span><span class="logo-version">v1.0</span></a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html" class="nav-link" id="nav-home">Home</a>
+        <a href="how-it-works.html" class="nav-link" id="nav-how">How It Works</a>
+        <a href="starter-guide.html" class="nav-link" id="nav-starter">Get Started</a>
+        <a href="playground.html" class="nav-link" id="nav-play">Playground</a>
+        <a href="showcase.html" class="nav-link" id="nav-showcase">Showcase</a>
+        <a href="community.html" class="nav-link active" id="nav-community">Community</a>
+      </div>
+      <div class="nav-actions">
+        <button class="btn btn-ghost btn-sm" id="admin-login-btn" onclick="openModal('admin-modal')">🔐 Admin</button>
+        <button class="btn btn-primary btn-sm" id="new-post-btn" onclick="openModal('post-modal')">+ New Post</button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero community-hero" id="page-hero">
+    <div class="container">
+      <div class="page-hero-content">
+        <div class="section-eyebrow">Community Board</div>
+        <h1>Ideas, Bugs &amp; Features</h1>
+        <p>Help shape the future of LALA. Share anonymously, upvote posts, and see what the community is saying.</p>
+      </div>
+
+      <!-- Stats bar -->
+      <div class="community-stats-bar" id="community-stats-bar">
+        <div class="comm-stat" id="cs-total"><span class="cs-num" id="stat-total">—</span><span class="cs-label">Total Posts</span></div>
+        <div class="comm-stat-divider"></div>
+        <div class="comm-stat" id="cs-ideas"><span class="cs-num" id="stat-ideas">—</span><span class="cs-label">💡 Ideas</span></div>
+        <div class="comm-stat-divider"></div>
+        <div class="comm-stat" id="cs-bugs"><span class="cs-num" id="stat-bugs">—</span><span class="cs-label">🐛 Bugs</span></div>
+        <div class="comm-stat-divider"></div>
+        <div class="comm-stat" id="cs-features"><span class="cs-num" id="stat-features">—</span><span class="cs-label">⚡ Features</span></div>
+        <div class="comm-stat-divider"></div>
+        <div class="comm-stat" id="cs-resolved"><span class="cs-num" id="stat-resolved">—</span><span class="cs-label">✅ Resolved</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter & Sort Bar -->
+  <section class="community-filter-bar" id="community-filter-bar">
+    <div class="container">
+      <div class="comm-filters-row">
+        <div class="comm-type-tabs" id="comm-type-tabs">
+          <button class="comm-tab active" data-type="all" id="ctab-all">All</button>
+          <button class="comm-tab" data-type="idea" id="ctab-idea">💡 Ideas</button>
+          <button class="comm-tab" data-type="bug" id="ctab-bug">🐛 Bugs</button>
+          <button class="comm-tab" data-type="feature" id="ctab-feature">⚡ Features</button>
+        </div>
+        <div class="comm-filter-controls">
+          <select class="sort-select" id="comm-sort-select">
+            <option value="newest">Newest</option>
+            <option value="popular">Most Upvoted</option>
+          </select>
+          <select class="sort-select" id="comm-status-select">
+            <option value="all">All Status</option>
+            <option value="open">Open</option>
+            <option value="in-progress">In Progress</option>
+            <option value="resolved">Resolved</option>
+            <option value="declined">Declined</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admin notice banner -->
+  <div class="admin-banner hidden" id="admin-banner">
+    <div class="container">
+      <span>🔐 Admin Mode Active — Viewing all posts including private. Manage statuses below.</span>
+      <button class="admin-logout-btn" id="admin-logout-btn">Log Out</button>
+    </div>
+  </div>
+
+  <!-- Posts Feed -->
+  <section class="community-main" id="community-main">
+    <div class="container community-layout">
+      <!-- Posts -->
+      <div class="posts-column" id="posts-column">
+        <div class="posts-feed" id="posts-feed"></div>
+        <div class="pagination" id="posts-pagination"></div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="community-sidebar" id="community-sidebar">
+        <!-- Quick post buttons -->
+        <div class="sidebar-card" id="sidebar-quick-post">
+          <h3>Share Your Thoughts</h3>
+          <p>Help make LALA better. Posts are anonymous by default.</p>
+          <div class="quick-post-btns">
+            <button class="quick-post-btn btn-idea" onclick="openPostModal('idea')" id="qp-idea">💡 Share an Idea</button>
+            <button class="quick-post-btn btn-bug" onclick="openPostModal('bug')" id="qp-bug">🐛 Report a Bug</button>
+            <button class="quick-post-btn btn-feature" onclick="openPostModal('feature')" id="qp-feature">⚡ Request Feature</button>
+          </div>
+        </div>
+
+        <!-- Popular tags -->
+        <div class="sidebar-card" id="sidebar-guidelines">
+          <h3>Community Guidelines</h3>
+          <ul class="guidelines-list">
+            <li>✅ Be specific and constructive</li>
+            <li>✅ Include code samples for bugs</li>
+            <li>✅ Search before posting duplicates</li>
+            <li>🚫 No spam or off-topic posts</li>
+            <li>🚫 No personal attacks</li>
+            <li>🔐 Admin reviews private posts only</li>
+          </ul>
+        </div>
+
+        <!-- Version selector -->
+        <div class="sidebar-card" id="sidebar-version">
+          <h3>LALA Version</h3>
+          <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:.75rem;">Current stable release</p>
+          <div class="version-badge-lg">v1.0.0</div>
+          <a href="index.html#downloads" class="btn btn-secondary" style="width:100%;justify-content:center;margin-top:.75rem;font-size:.85rem">Download Latest</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ NEW POST MODAL ============ -->
+  <div class="modal-overlay" id="post-modal">
+    <div class="modal" id="post-modal-inner">
+      <div class="modal-header">
+        <h2 class="modal-title" id="post-modal-title">New Community Post</h2>
+        <button class="modal-close" onclick="closeModal('post-modal')" id="post-modal-close">✕</button>
+      </div>
+      <form id="post-form" novalidate>
+        <!-- Type selector -->
+        <div class="form-group">
+          <label class="form-label">Post Type *</label>
+          <div class="post-type-selector" id="post-type-selector">
+            <button type="button" class="post-type-btn active" data-type="idea" id="pt-idea">
+              <span class="pt-icon">💡</span><span class="pt-label">Idea</span>
+            </button>
+            <button type="button" class="post-type-btn" data-type="bug" id="pt-bug">
+              <span class="pt-icon">🐛</span><span class="pt-label">Bug Report</span>
+            </button>
+            <button type="button" class="post-type-btn" data-type="feature" id="pt-feature">
+              <span class="pt-icon">⚡</span><span class="pt-label">Feature Request</span>
+            </button>
+          </div>
+          <input type="hidden" id="post-type-value" value="idea" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="post-title">Title *</label>
+          <input class="form-input" id="post-title" type="text" placeholder="Short, descriptive title" maxlength="120" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="post-description">Description *</label>
+          <textarea class="form-textarea" id="post-description" rows="5"
+            placeholder="Describe in detail. For bugs, include steps to reproduce, expected vs actual behaviour, and LALA version."
+            maxlength="3000" required></textarea>
+          <div class="char-counter"><span id="desc-char-count">0</span> / 3000</div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="post-author">Your Name (optional)</label>
+            <input class="form-input" id="post-author" type="text" placeholder="Anonymous" maxlength="60" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="post-dialect">Related Dialect</label>
+            <select class="form-select" id="post-dialect">
+              <option value="any">All / Any</option>
+              <option value="english">English</option>
+              <option value="yoruba">Yorùbá</option>
+              <option value="hausa">Hausa</option>
+              <option value="igbo">Igbo</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="post-version">LALA Version</label>
+          <select class="form-select" id="post-version">
+            <option value="v1.0.0">v1.0.0 (Current)</option>
+            <option value="general">General / Future</option>
+          </select>
+        </div>
+
+        <!-- Screenshot upload -->
+        <div class="form-group" id="screenshot-group">
+          <label class="form-label">Screenshot (for bugs — highly encouraged)</label>
+          <div class="file-upload-area" id="post-upload-area">
+            <div class="upload-icon">📸</div>
+            <p>Drag &amp; drop or click to upload</p>
+            <span class="upload-hint">PNG, JPG, GIF, WebP — max 8MB</span>
+          </div>
+          <input type="file" id="post-screenshot" accept="image/*" style="display:none" />
+          <div id="post-screenshot-preview"></div>
+        </div>
+
+        <!-- Visibility toggle -->
+        <div class="form-group">
+          <label class="form-label">Visibility</label>
+          <div class="visibility-toggle" id="visibility-toggle">
+            <button type="button" class="vis-btn active" data-vis="public" id="vis-public">
+              🌍 Public <span class="vis-desc">Visible to everyone</span>
+            </button>
+            <button type="button" class="vis-btn" data-vis="admin" id="vis-admin">
+              🔐 Admin Only <span class="vis-desc">Only admins can see</span>
+            </button>
+          </div>
+          <input type="hidden" id="post-visibility-value" value="public" />
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost" onclick="closeModal('post-modal')" id="cancel-post-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="submit-post-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Post to Community
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ ADMIN LOGIN MODAL ============ -->
+  <div class="modal-overlay" id="admin-modal">
+    <div class="modal admin-login-modal" id="admin-modal-inner">
+      <div class="modal-header">
+        <h2 class="modal-title">🔐 Admin Access</h2>
+        <button class="modal-close" onclick="closeModal('admin-modal')" id="admin-modal-close">✕</button>
+      </div>
+      <p style="color:var(--text-secondary);margin-bottom:1.5rem;font-size:.9rem">Enter the admin password to view all posts and manage statuses.</p>
+      <div class="form-group">
+        <label class="form-label" for="admin-password">Admin Password</label>
+        <input class="form-input" id="admin-password" type="password" placeholder="Enter password" />
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" onclick="closeModal('admin-modal')" id="cancel-admin-btn">Cancel</button>
+        <button class="btn btn-primary" id="admin-login-submit-btn" onclick="adminLogin()">Login</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ POST DETAIL MODAL ============ -->
+  <div class="modal-overlay" id="post-detail-modal">
+    <div class="modal modal-lg" id="post-detail-inner">
+      <div class="modal-header">
+        <h2 class="modal-title" id="post-detail-title">Post</h2>
+        <button class="modal-close" onclick="closeModal('post-detail-modal')" id="post-detail-close">✕</button>
+      </div>
+      <div id="post-detail-body"></div>
+    </div>
+  </div>
+
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="index.html" class="nav-logo"><div class="logo-mark">L</div><span class="logo-text">LALA</span></a><p>Empowering polyglot indigenous computing.</p><div class="footer-langs"><span>English</span> · <span>Yorùbá</span> · <span>Hausa</span> · <span>Igbo</span></div></div>
+        <div class="footer-col"><h4>Learn</h4><a href="how-it-works.html">How It Works</a><a href="starter-guide.html">Starter Guide</a><a href="playground.html">Playground</a></div>
+        <div class="footer-col"><h4>Community</h4><a href="showcase.html">Project Showcase</a><a href="community.html">Community Board</a></div>
+        <div class="footer-col"><h4>Download</h4><a href="index.html#downloads">All Platforms</a></div>
+      </div>
+      <div class="footer-bottom"><p>© 2024 LALA Programming Language.</p><p>Built with ❤️ for African developers.</p></div>
+    </div>
+  </footer>
+
+  <script src="js/global.js"></script>
+  <script src="js/community.js"></script>
+</body>
+</html>

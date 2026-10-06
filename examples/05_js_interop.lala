@@ -1,0 +1,34 @@
+// Example 5: Seamless JavaScript Interoperability in Wazobia
+// Access Node.js built-ins and npm modules without boilerplate
+
+print("╔═══════════════════════════════════════════════════════╗")
+print("║         JAVASCRIPT INTEROPERABILITY IN WAZOBIA        ║")
+print("╚═══════════════════════════════════════════════════════╝")
+
+// 1. Calling JS Globals directly
+let jsTime = js.Date.now()
+print("JS Date.now() timestamp:", jsTime)
+
+let sqrtValue = js.Math.sqrt(625)
+print("JS Math.sqrt(625):", sqrtValue)
+
+let maxNumber = js.Math.max(12, 89, 43, 99, 5)
+print("JS Math.max(...):", maxNumber)
+
+let randomNum = js.Math.floor(js.Math.random() * 100)
+print("JS Random Integer (0-99):", randomNum)
+
+// 2. Importing Node.js core modules
+import js "path" as jspath
+let combinedPath = jspath.join("users", "wazobia", "projects", "app.lala")
+print("JS path.join result:", combinedPath)
+
+import js "crypto" as jscrypto
+let randomBytesHex = jscrypto.randomBytes(8).toString("hex")
+print("JS crypto.randomBytes hex token:", randomBytesHex)
+
+// 3. Dynamic JS Evaluation
+let evaluatedValue = js.eval("['Yoruba', 'Hausa', 'Igbo'].map(s => s.toUpperCase())")
+print("JS eval output:", evaluatedValue)
+
+print("✔ JavaScript Interoperability verification complete!")

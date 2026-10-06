@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How LALA Works — Compiler Architecture & Language Design</title>
+  <meta name="description" content="Deep dive into LALA's multilingual syntax engine, Unicode lexer, recursive descent parser, AST, JavaScript & Python interoperability bridges." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/howworks.css" />
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" id="nav-logo-link">
+        <div class="logo-mark">L</div>
+        <span class="logo-text">LALA</span>
+        <span class="logo-version">v1.0</span>
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html" class="nav-link" id="nav-home">Home</a>
+        <a href="how-it-works.html" class="nav-link active" id="nav-how">How It Works</a>
+        <a href="starter-guide.html" class="nav-link" id="nav-starter">Get Started</a>
+        <a href="playground.html" class="nav-link" id="nav-play">Playground</a>
+        <a href="showcase.html" class="nav-link" id="nav-showcase">Showcase</a>
+        <a href="community.html" class="nav-link" id="nav-community">Community</a>
+      </div>
+      <div class="nav-actions">
+        <a href="playground.html" class="btn btn-primary btn-sm" id="nav-try-btn">Try LALA</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero" id="page-hero">
+    <div class="container">
+      <div class="page-hero-content">
+        <div class="section-eyebrow">Architecture & Design</div>
+        <h1>How LALA Works</h1>
+        <p>From source code in any of 4 languages to running program — a deep dive into LALA's multilingual compiler pipeline, JS/Python bridges, and dialect engine.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOC -->
+  <section class="hw-toc-section" id="hw-toc">
+    <div class="container">
+      <div class="hw-toc-grid">
+        <a href="#philosophy" class="hw-toc-item" id="toc-1"><span class="toc-num">01</span><span>Philosophy</span></a>
+        <a href="#syntax" class="hw-toc-item" id="toc-2"><span class="toc-num">02</span><span>Syntax & Grammar</span></a>
+        <a href="#lexer" class="hw-toc-item" id="toc-3"><span class="toc-num">03</span><span>Multilingual Lexer</span></a>
+        <a href="#parser" class="hw-toc-item" id="toc-4"><span class="toc-num">04</span><span>Parser & AST</span></a>
+        <a href="#interpreter" class="hw-toc-item" id="toc-5"><span class="toc-num">05</span><span>Tree-Walk Evaluator</span></a>
+        <a href="#js-interop" class="hw-toc-item" id="toc-6"><span class="toc-num">06</span><span>JS Interop</span></a>
+        <a href="#py-interop" class="hw-toc-item" id="toc-7"><span class="toc-num">07</span><span>Python Bridge</span></a>
+        <a href="#type-system" class="hw-toc-item" id="toc-8"><span class="toc-num">08</span><span>Type System</span></a>
+        <a href="#dialect-translator" class="hw-toc-item" id="toc-9"><span class="toc-num">09</span><span>Dialect Translator</span></a>
+        <a href="#memory" class="hw-toc-item" id="toc-10"><span class="toc-num">10</span><span>Memory & Runtime</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content sections -->
+  <main class="hw-main" id="hw-main">
+    <div class="container hw-container">
+      <!-- Sidebar -->
+      <aside class="hw-sidebar" id="hw-sidebar">
+        <div class="hw-sidebar-inner">
+          <h4>Contents</h4>
+          <nav>
+            <a href="#philosophy" class="hw-sidebar-link active">Philosophy</a>
+            <a href="#syntax" class="hw-sidebar-link">Syntax & Grammar</a>
+            <a href="#lexer" class="hw-sidebar-link">Multilingual Lexer</a>
+            <a href="#parser" class="hw-sidebar-link">Parser & AST</a>
+            <a href="#interpreter" class="hw-sidebar-link">Tree-Walk Evaluator</a>
+            <a href="#js-interop" class="hw-sidebar-link">JS Interop</a>
+            <a href="#py-interop" class="hw-sidebar-link">Python Bridge</a>
+            <a href="#type-system" class="hw-sidebar-link">Type System</a>
+            <a href="#dialect-translator" class="hw-sidebar-link">Dialect Translator</a>
+            <a href="#memory" class="hw-sidebar-link">Memory & Runtime</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="hw-content" id="hw-content">
+
+        <!-- Philosophy -->
+        <section class="hw-section" id="philosophy">
+          <h2>1. Philosophy — The Core Triad</h2>
+          <p>LALA is built on three foundational pillars that distinguish it from every other programming language in existence:</p>
+
+          <div class="hw-pillars">
+            <div class="hw-pillar" id="pillar-1">
+              <div class="pillar-icon">🌍</div>
+              <h3>Linguistic Sovereignty</h3>
+              <p>Developers should never be forced to master a foreign language merely to express computational logic. LALA elevates <strong>Yorùbá</strong>, <strong>Hausa</strong>, and <strong>Igbo</strong> — three of Africa's most spoken languages — alongside <strong>English</strong> as first-class grammatical citizens. Every keyword, construct, and operator has a native equivalent.</p>
+            </div>
+            <div class="hw-pillar" id="pillar-2">
+              <div class="pillar-icon">⚡</div>
+              <h3>Zero-Boilerplate Polyglot Reach</h3>
+              <p>A new language cannot thrive in isolation. LALA provides instantaneous, transparent bridges to the two largest developer ecosystems: <strong>JavaScript/Node.js (npm)</strong> and <strong>Python 3.14 (PyPI)</strong>. Import any npm package or Python library with a single line — no glue code, no marshaling.</p>
+            </div>
+            <div class="hw-pillar" id="pillar-3">
+              <div class="pillar-icon">🎯</div>
+              <h3>Ergonomic Simplicity</h3>
+              <p>LALA unites Python's conciseness with JavaScript's versatility. Clean brace-delimited blocks, optional semicolons, first-class logical keywords (<code>and</code>, <code>or</code>, <code>not</code>), and three dedicated <code>for</code> loop constructs make LALA immediately approachable.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Syntax -->
+        <section class="hw-section" id="syntax">
+          <h2>2. Syntax & Grammar</h2>
+          <p>LALA's syntax is modern, expressive, and tolerant of stylistic variation:</p>
+
+          <div class="hw-rule-list">
+            <div class="hw-rule"><span class="rule-label">Blocks</span><span>Delimited by curly braces <code>{ ... }</code>. Indentation is aesthetic, not structural.</span></div>
+            <div class="hw-rule"><span class="rule-label">Semicolons</span><span>Optional at end of statements. Newlines serve as implicit terminators.</span></div>
+            <div class="hw-rule"><span class="rule-label">Parentheses</span><span>Optional around <code>if</code>, <code>for</code>, and <code>while</code> conditions when followed by a brace block.</span></div>
+            <div class="hw-rule"><span class="rule-label">Comments</span><span>Single-line: <code>//</code> or <code>#</code>. Multi-line: <code>/* ... */</code></span></div>
+            <div class="hw-rule"><span class="rule-label">Encoding</span><span>Full UTF-8. Source files use NFKC normalization — accented and unaccented forms are equivalent.</span></div>
+          </div>
+
+          <div class="code-window mt-lg">
+            <div class="code-window-bar">
+              <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+              <span class="code-window-title">syntax_demo.lala</span>
+            </div>
+            <div class="code-window-body">
+              <pre class="code-block" id="syntax-demo"></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- Lexer -->
+        <section class="hw-section" id="lexer">
+          <h2>3. The Multilingual Lexer</h2>
+          <p>The heart of LALA's multilingual capability is its <strong>Unicode Lexer</strong>. It processes raw source text into a stream of canonical tokens that the parser understands uniformly, regardless of the input dialect.</p>
+
+          <div class="hw-flow" id="lexer-flow">
+            <div class="hw-flow-step">
+              <div class="flow-step-num">1</div>
+              <div class="flow-step-content">
+                <h4>NFKC Normalization</h4>
+                <p>All source characters are normalized using Unicode NFKC — ensuring <code>tẹ</code> and <code>te</code>, or <code>bikoṣe</code> and <code>bikose</code>, are recognized identically.</p>
+              </div>
+            </div>
+            <div class="hw-flow-step">
+              <div class="flow-step-num">2</div>
+              <div class="flow-step-content">
+                <h4>Dialect Auto-Detection</h4>
+                <p>LALA checks <code>lala.config.json</code> for dialect. If absent, it scans for signature vocabulary — Hausa markers like <code>buga</code>, <code>aiki</code>; Yorùbá markers like <code>gbiyanju</code>, <code>otito</code>.</p>
+              </div>
+            </div>
+            <div class="hw-flow-step">
+              <div class="flow-step-num">3</div>
+              <div class="flow-step-content">
+                <h4>Homograph Resolution</h4>
+                <p>Critical for <code>ko</code>: In Hausa dialect it means <strong>OR</strong>. In Yorùbá it means <strong>NOT</strong>. The contextual detector disambiguates using the detected dialect.</p>
+              </div>
+            </div>
+            <div class="hw-flow-step">
+              <div class="flow-step-num">4</div>
+              <div class="flow-step-content">
+                <h4>Canonical Tokenization</h4>
+                <p>All dialect variants map to the same internal token: <code>fun</code>, <code>don</code>, <code>maka</code>, and <code>for</code> all become <code>KW_FOR</code>. The parser sees only canonical tokens.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 2rem">Keyword Rosetta Stone</h3>
+          <div class="hw-table-wrapper">
+            <table class="hw-table" id="keyword-table">
+              <thead>
+                <tr><th>English</th><th>Yorùbá</th><th>Hausa</th><th>Igbo</th><th>Internal Token</th></tr>
+              </thead>
+              <tbody id="keyword-table-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Parser -->
+        <section class="hw-section" id="parser">
+          <h2>4. Parser & Abstract Syntax Tree (AST)</h2>
+          <p>The canonical token stream is fed into a <strong>Recursive Descent Parser</strong> using Precedence Climbing for operator expressions. It produces an <strong>Abstract Syntax Tree (AST)</strong>.</p>
+
+          <div class="hw-arch-diagram" id="arch-diagram">
+            <div class="arch-box arch-source">Source Code (.lala)</div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-box arch-lexer">Unicode Lexer<br/><small>NFKC · Dialect Detection · Canonical Tokens</small></div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-box arch-parser">Recursive Descent Parser<br/><small>Precedence Climbing · Expression Grammar</small></div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-box arch-ast">Abstract Syntax Tree (AST)</div>
+            <div class="arch-split">
+              <div class="arch-split-branch">
+                <div class="arch-arrow">↓</div>
+                <div class="arch-box arch-eval">Tree-Walk Evaluator<br/><small>Lexical Scoping · OOP · Closures</small></div>
+                <div class="arch-split-inner">
+                  <div>
+                    <div class="arch-arrow">↓</div>
+                    <div class="arch-box arch-js">JS V8 Proxy<br/><small>npm · Node.js</small></div>
+                  </div>
+                  <div>
+                    <div class="arch-arrow">↓</div>
+                    <div class="arch-box arch-py">Python IPC Bridge<br/><small>PyPI · ML Stack</small></div>
+                  </div>
+                </div>
+              </div>
+              <div class="arch-split-branch">
+                <div class="arch-arrow">↓</div>
+                <div class="arch-box arch-trans">Dialect Transpiler<br/><small>EN ↔ YO ↔ HA ↔ IG</small></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Interpreter -->
+        <section class="hw-section" id="interpreter">
+          <h2>5. Tree-Walk Evaluator</h2>
+          <p>LALA's runtime is a <strong>Tree-Walk Interpreter</strong> that traverses the AST and evaluates nodes directly. Key features:</p>
+          <ul class="hw-list">
+            <li><strong>Lexical Environments</strong>: Each block creates a new scope. Variable lookups walk up the scope chain.</li>
+            <li><strong>First-class Functions</strong>: Functions capture their enclosing environment at creation — full closure semantics.</li>
+            <li><strong>OOP Classes</strong>: Classes are runtime objects. <code>init</code> serves as the constructor. Method dispatch uses instance environments.</li>
+            <li><strong>Async/Await</strong>: Event-loop concurrency via the V8 promise system — <code>async fn</code> returns a Promise.</li>
+            <li><strong>Error Propagation</strong>: Exceptions bubble up through the call stack until caught by <code>try/catch</code>.</li>
+          </ul>
+        </section>
+
+        <!-- JS Interop -->
+        <section class="hw-section" id="js-interop">
+          <h2>6. JavaScript Interoperability</h2>
+          <p>LALA runs <em>inside</em> Node.js/V8. The JS interop layer uses <strong>Transparent Proxy Objects</strong> — no serialization, no IPC.</p>
+
+          <div class="hw-interop-diagram" id="js-interop-diagram">
+            <div class="interop-side lala-side">
+              <div class="interop-label">LALA Runtime</div>
+              <div class="interop-code">
+                <code>let x = js.Math.sqrt(144)</code><br/>
+                <code>import js "fs" as fs</code>
+              </div>
+            </div>
+            <div class="interop-bridge">
+              <div class="bridge-label">V8 Proxy (zero-copy)</div>
+              <div class="bridge-arrow">⟷</div>
+            </div>
+            <div class="interop-side js-side">
+              <div class="interop-label">Node.js / npm</div>
+              <div class="interop-code">
+                <code>Math.sqrt(144) // 12</code><br/>
+                <code>require('fs')</code>
+              </div>
+            </div>
+          </div>
+
+          <div class="code-window mt-lg">
+            <div class="code-window-bar">
+              <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+              <span class="code-window-title">js_interop.lala</span>
+            </div>
+            <div class="code-window-body">
+              <pre class="code-block" id="js-interop-code"></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- Python Bridge -->
+        <section class="hw-section" id="py-interop">
+          <h2>7. Python 3.14 Bridge</h2>
+          <p>Python interop uses a <strong>JSON-RPC IPC Bridge</strong>. LALA spawns a Python subprocess that runs a lightweight server. Calls are serialized over stdin/stdout with JSON payloads.</p>
+
+          <div class="hw-ipc-diagram" id="ipc-diagram">
+            <div class="ipc-box ipc-lala">LALA Process<br/><small>Node.js / V8</small></div>
+            <div class="ipc-channel">
+              <div class="ipc-label">JSON-RPC over IPC</div>
+              <div class="ipc-arrows">
+                <span>→ request →</span>
+                <span>← response ←</span>
+              </div>
+            </div>
+            <div class="ipc-box ipc-py">Python 3.14<br/><small>PyPI · ML · Data Science</small></div>
+          </div>
+
+          <div class="code-window mt-lg">
+            <div class="code-window-bar">
+              <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+              <span class="code-window-title">py_bridge.lala</span>
+            </div>
+            <div class="code-window-body">
+              <pre class="code-block" id="py-interop-code"></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- Type System -->
+        <section class="hw-section" id="type-system">
+          <h2>8. Type System</h2>
+          <p>LALA is <strong>dynamically typed</strong> with runtime type reflection. All values carry a type tag inspectable via <code>type(val)</code>.</p>
+
+          <div class="hw-types-grid">
+            <div class="hw-type-card"><span class="type-tag">Number</span><span>IEEE 754 64-bit float. e.g. <code>42</code>, <code>3.14</code></span></div>
+            <div class="hw-type-card"><span class="type-tag">String</span><span>UTF-8 immutable. Template literals: <code>"Hello ${name}"</code></span></div>
+            <div class="hw-type-card"><span class="type-tag">Boolean</span><span><code>true</code>/<code>false</code> and 4-language equivalents</span></div>
+            <div class="hw-type-card"><span class="type-tag">Null</span><span><code>null</code>, <code>ofo</code>, <code>babu</code>, <code>efu</code></span></div>
+            <div class="hw-type-card"><span class="type-tag">List</span><span>Dynamic ordered arrays: <code>[1, "a", true]</code></span></div>
+            <div class="hw-type-card"><span class="type-tag">Object</span><span>Key-value maps: <code>{ name: "Ade" }</code></span></div>
+            <div class="hw-type-card"><span class="type-tag">Function</span><span>First-class closures, arrow functions <code>(x) => x*2</code></span></div>
+            <div class="hw-type-card"><span class="type-tag">Class</span><span>OOP blueprints with <code>init</code> constructor</span></div>
+            <div class="hw-type-card"><span class="type-tag">JSProxy</span><span>Transparent wrapper around JS objects</span></div>
+            <div class="hw-type-card"><span class="type-tag">PyProxy</span><span>Transparent wrapper around Python objects</span></div>
+          </div>
+        </section>
+
+        <!-- Dialect Translator -->
+        <section class="hw-section" id="dialect-translator">
+          <h2>9. Source-to-Source Dialect Translator</h2>
+          <p>LALA includes a built-in <strong>bidirectional source-to-source translator</strong>. It takes any <code>.lala</code> file and rewrites all keywords while preserving identifiers, strings, and structure.</p>
+
+          <div class="code-window">
+            <div class="code-window-bar">
+              <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+              <span class="code-window-title">CLI Translation</span>
+            </div>
+            <div class="code-window-body">
+              <pre class="code-block"># Translate English → Yorùbá
+lala translate script.lala --to yo
+
+# Translate Yorùbá → Igbo
+lala translate yoruba_app.lala --to ig
+
+# Translate anything → Hausa
+lala translate any_dialect.lala --to ha
+
+# Check current dialect
+lala translate file.lala --detect</pre>
+            </div>
+          </div>
+
+          <div class="hw-translate-demo" id="translate-demo">
+            <div class="translate-from">
+              <div class="translate-lang-label">English Source</div>
+              <pre class="translate-code" id="translate-en"></pre>
+            </div>
+            <div class="translate-arrow-col">
+              <div class="translate-arrows">→</div>
+              <span class="translate-engine-label">Dialect Translator</span>
+            </div>
+            <div class="translate-to">
+              <div class="translate-lang-label" id="translate-to-label">Yorùbá Output</div>
+              <pre class="translate-code" id="translate-yo"></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- Memory -->
+        <section class="hw-section" id="memory">
+          <h2>10. Memory Model & Runtime Security</h2>
+          <p>LALA leverages <strong>V8's high-performance garbage collector</strong> (generational mark-and-sweep) for automatic memory management.</p>
+
+          <ul class="hw-list">
+            <li><strong>Heap allocation</strong>: All LALA objects (lists, maps, closures) live on V8's managed heap.</li>
+            <li><strong>GC lifecycle</strong>: Objects become eligible for collection when no references exist — including cross-language proxy cleanup.</li>
+            <li><strong>Python proxy lifecycle</strong>: When a PyProxy loses its last LALA reference, a finalization message is sent over the IPC channel to decrement the Python refcount.</li>
+            <li><strong>Sandboxed mode</strong>: Run with <code>--safe</code> to disable filesystem writes and restrict FFI loading.</li>
+            <li><strong>Explicit permissions</strong>: <code>allow_js</code> and <code>allow_python</code> in <code>lala.config.json</code> control interop access.</li>
+          </ul>
+
+          <div class="hw-security-box">
+            <h4>🔒 Security Configuration (lala.config.json)</h4>
+            <pre class="code-block" id="security-config"></pre>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo"><div class="logo-mark">L</div><span class="logo-text">LALA</span></a>
+          <p>Empowering polyglot indigenous computing. Write software in your mother tongue.</p>
+          <div class="footer-langs"><span>English</span> · <span>Yorùbá</span> · <span>Hausa</span> · <span>Igbo</span></div>
+        </div>
+        <div class="footer-col"><h4>Learn</h4><a href="how-it-works.html">How It Works</a><a href="starter-guide.html">Starter Guide</a><a href="playground.html">Playground</a></div>
+        <div class="footer-col"><h4>Community</h4><a href="showcase.html">Project Showcase</a><a href="community.html">Community Board</a></div>
+        <div class="footer-col"><h4>Download</h4><a href="index.html#downloads">Windows</a><a href="index.html#downloads">macOS</a><a href="index.html#downloads">Linux</a></div>
+      </div>
+      <div class="footer-bottom"><p>© 2024 LALA Programming Language.</p><p>Built with ❤️ for African developers.</p></div>
+    </div>
+  </footer>
+
+  <script src="js/global.js"></script>
+  <script src="js/howworks.js"></script>
+</body>
+</html>

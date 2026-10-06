@@ -1,0 +1,46 @@
+// Àpẹẹrẹ 2: Èdè Yorùbá (Wazobia Native Dialect)
+// Ìkọ̀wé kọ̀mpútà ní èdè abínibí wa
+
+te("╔═══════════════════════════════════════════════════════╗")
+te("║           ETO EDE YORUBA NI WAZOBIA                   ║")
+te("╚═══════════════════════════════════════════════════════╝")
+
+// Awọn Oniyipada (Variables)
+je oruko = "Babatunde"
+je ojo_ori = 28
+je omo_naija = otito
+
+ti (ojo_ori >= 18 ati omo_naija == otito) {
+    te("E kaabo, " + oruko + "! O yege lati dibo.")
+} bikose {
+    te("E ma binu, o ko tii yege.")
+}
+
+// Lupu 'fun' (For loops)
+te("\n--- Lupu 'fun' lati 1 de 6 ---")
+fun nomba ninu 1..6 {
+    ti (nomba % 2 == 0 ati ko (nomba == 4)) {
+        te("Nomba paapaa ti o ye: " + nomba)
+    }
+}
+
+// Iṣẹ́ (Functions)
+ise isiro_ere(owo_ori, iye) {
+    je ere = owo_ori * iye
+    pada ere
+}
+
+je abajade_ere = isiro_ere(500, 3)
+te("Ere ti a ri ni: " + abajade_ere + " Naira")
+
+// Gbiyanju ati Mu (Try-Catch Error Handling)
+gbiyanju {
+    te("A n gbiyanju ise pataki...")
+    ti (ko otito) {
+        te("Eyi ko le han!")
+    }
+} mu (asise) {
+    te("A ri aṣiṣe: " + asise)
+} ni_ipari {
+    te("A pari igbiyanju yii pelu aseyori!")
+}

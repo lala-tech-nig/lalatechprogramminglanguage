@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LALA — Starter Guide | Get Up &amp; Running in Minutes</title>
+  <meta name="description" content="Complete beginner guide to LALA. Install on Windows, macOS or Linux, write your first program, and master all 4 dialects." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/guide.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><div class="logo-mark">L</div><span class="logo-text">LALA</span><span class="logo-version">v1.0</span></a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html"         class="nav-link" id="nl-home">Home</a>
+        <a href="how-it-works.html"  class="nav-link" id="nl-how">How It Works</a>
+        <a href="starter-guide.html" class="nav-link active" id="nl-start">Get Started</a>
+        <a href="playground.html"    class="nav-link" id="nl-play">Playground</a>
+        <a href="showcase.html"      class="nav-link" id="nl-show">Showcase</a>
+        <a href="community.html"     class="nav-link" id="nl-comm">Community</a>
+      </div>
+      <div class="nav-actions">
+        <a href="playground.html" class="btn btn-primary btn-sm" id="nav-try-btn">Try LALA Free</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero" id="page-hero">
+    <div class="container">
+      <div class="page-hero-content">
+        <div class="section-eyebrow">Documentation</div>
+        <h1>Start Building with LALA</h1>
+        <p>From zero to your first running LALA program in under 5 minutes. Choose your language, install, and go.</p>
+        <div class="guide-hero-badge">
+          ⏱️ Estimated time: 5 minutes &nbsp;·&nbsp; 🎯 Beginner friendly
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK JUMP CARDS -->
+  <section style="background:var(--bg-secondary);padding:2.5rem 0;border-bottom:1px solid var(--border-light)" id="quick-jump-section">
+    <div class="container">
+      <div class="guide-quick-cards" id="guide-quick-cards">
+        <a href="#installation" class="guide-quick-card" id="gqc-install">
+          <div class="gqc-icon">📦</div>
+          <div class="gqc-title">Installation</div>
+          <div class="gqc-desc">Windows, macOS, Linux &amp; npm</div>
+        </a>
+        <a href="#first-program" class="guide-quick-card" id="gqc-first">
+          <div class="gqc-icon">🚀</div>
+          <div class="gqc-title">First Program</div>
+          <div class="gqc-desc">Hello World in 4 dialects</div>
+        </a>
+        <a href="#dialects" class="guide-quick-card" id="gqc-dialects">
+          <div class="gqc-icon">🌍</div>
+          <div class="gqc-title">Dialects</div>
+          <div class="gqc-desc">English, Yorùbá, Hausa, Igbo</div>
+        </a>
+        <a href="#basics" class="guide-quick-card" id="gqc-basics">
+          <div class="gqc-icon">📖</div>
+          <div class="gqc-title">Language Basics</div>
+          <div class="gqc-desc">Variables, loops, functions</div>
+        </a>
+        <a href="#interop" class="guide-quick-card" id="gqc-interop">
+          <div class="gqc-icon">⚡</div>
+          <div class="gqc-title">JS &amp; Python Interop</div>
+          <div class="gqc-desc">npm + PyPI in LALA</div>
+        </a>
+        <a href="#cli-reference" class="guide-quick-card" id="gqc-cli">
+          <div class="gqc-icon">💻</div>
+          <div class="gqc-title">CLI Reference</div>
+          <div class="gqc-desc">All lala commands</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main style="background:var(--bg-primary)">
+    <div class="container">
+      <div class="guide-layout" id="guide-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="guide-sidebar" id="guide-sidebar">
+          <div class="guide-sidebar-inner">
+            <h4>On this page</h4>
+            <a href="#installation"  class="guide-nav-link active" id="gnl-install">📦 Installation</a>
+            <a href="#first-program" class="guide-nav-link" id="gnl-first">🚀 First Program</a>
+            <a href="#dialects"      class="guide-nav-link" id="gnl-dialects">🌍 Dialects</a>
+            <a href="#basics"        class="guide-nav-link" id="gnl-basics">📖 Language Basics</a>
+            <a href="#interop"       class="guide-nav-link" id="gnl-interop">⚡ JS &amp; Python Interop</a>
+            <a href="#cli-reference" class="guide-nav-link" id="gnl-cli">💻 CLI Reference</a>
+            <a href="#next-steps"    class="guide-nav-link" id="gnl-next">🎯 Next Steps</a>
+            <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border-light)">
+              <a href="playground.html" class="btn btn-primary" style="width:100%;justify-content:center;font-size:.82rem" id="sidebar-try-btn">▶ Try in Playground</a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- GUIDE CONTENT -->
+        <div class="guide-content" id="guide-content">
+
+          <!-- ═══════════════ INSTALLATION ═══════════════ -->
+          <section class="guide-section" id="installation">
+            <h2>📦 Installation</h2>
+            <p>LALA runs on the V8 engine via Node.js. Install Node.js 18+ first if you don't have it, then install LALA.</p>
+
+            <!-- Prerequisites -->
+            <h3>Prerequisites</h3>
+            <div class="prereq-grid" id="prereq-grid">
+              <div class="prereq-item" id="pre-node">
+                <div class="prereq-icon">⚙️</div>
+                <div>
+                  <strong>Node.js 18+</strong>
+                  <p>Required for the V8 runtime and JS interop</p>
+                  <a href="https://nodejs.org" class="prereq-link" target="_blank" rel="noopener">nodejs.org →</a>
+                </div>
+              </div>
+              <div class="prereq-item" id="pre-python">
+                <div class="prereq-icon">🐍</div>
+                <div>
+                  <strong>Python 3.9+ (optional)</strong>
+                  <p>Required only for Python interop features</p>
+                  <a href="https://python.org" class="prereq-link" target="_blank" rel="noopener">python.org →</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Install Tabs -->
+            <h3>Choose your platform</h3>
+            <div class="install-tabs" id="install-tabs" role="tablist">
+              <button class="install-tab active" data-tab="npm"     id="itab-npm">📦 npm (Recommended)</button>
+              <button class="install-tab" data-tab="windows"  id="itab-win">🪟 Windows</button>
+              <button class="install-tab" data-tab="macos"    id="itab-mac">🍎 macOS</button>
+              <button class="install-tab" data-tab="linux"    id="itab-linux">🐧 Linux</button>
+            </div>
+
+            <!-- npm -->
+            <div class="install-content" id="tab-npm">
+              <div class="code-window" style="margin-bottom:1rem">
+                <div class="code-window-bar"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span><span class="code-window-title">Terminal</span></div>
+                <div class="code-window-body">
+                  <pre class="code-block"><span class="cmt"># Install globally</span>
+npm install -g lala-lang
+
+<span class="cmt"># Verify installation</span>
+lala --version</pre>
+                </div>
+              </div>
+              <div class="guide-note" id="note-npm">
+                <span class="note-icon">💡</span>
+                <div><strong>On macOS/Linux</strong> you may need to prefix with <code>sudo</code> depending on your Node.js setup. Using <a href="https://github.com/nvm-sh/nvm" style="color:var(--lala-purple);font-weight:700">nvm</a> avoids this entirely.</div>
+              </div>
+            </div>
+
+            <!-- Windows -->
+            <div class="install-content hidden" id="tab-windows">
+              <ol class="install-steps" id="win-steps">
+                <li>Download the Windows installer: <a href="downloads/Setup-Lala-v1.0.0-win.exe" class="prereq-link">Setup-Lala-v1.0.0-win.exe ↓</a></li>
+                <li>Run the installer and follow the prompts. Node.js runtime is bundled.</li>
+                <li>Open a new <strong>PowerShell</strong> or <strong>Command Prompt</strong> and run:<br/><code style="font-family:var(--font-mono);color:var(--lala-purple)">lala --version</code></li>
+                <li>You should see <code>LALA v1.0.0</code>. You're ready!</li>
+              </ol>
+            </div>
+
+            <!-- macOS -->
+            <div class="install-content hidden" id="tab-macos">
+              <div class="code-window" style="margin-bottom:1rem">
+                <div class="code-window-bar"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span><span class="code-window-title">Terminal</span></div>
+                <div class="code-window-body">
+                  <pre class="code-block"><span class="cmt"># Via Homebrew (recommended)</span>
+brew tap lala-lang/lala
+brew install lala
+
+<span class="cmt"># Or download the .dmg installer</span>
+<span class="cmt"># from the Downloads page</span>
+
+<span class="cmt"># Verify</span>
+lala --version</pre>
+                </div>
+              </div>
+            </div>
+
+            <!-- Linux -->
+            <div class="install-content hidden" id="tab-linux">
+              <div class="code-window" style="margin-bottom:1rem">
+                <div class="code-window-bar"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span><span class="code-window-title">Terminal</span></div>
+                <div class="code-window-body">
+                  <pre class="code-block"><span class="cmt"># Ubuntu / Debian</span>
+curl -fsSL https://deb.lala-lang.dev/setup.sh | sudo bash
+sudo apt install lala
+
+<span class="cmt"># Fedora / RHEL</span>
+sudo dnf install lala
+
+<span class="cmt"># Arch Linux (AUR)</span>
+yay -S lala-lang
+
+<span class="cmt"># Or via tarball</span>
+tar -xvf lala-v1.0.0-linux.tar.gz
+sudo mv lala /usr/local/bin/</pre>
+                </div>
+              </div>
+            </div>
+
+            <!-- Verify -->
+            <h3>Verify your installation</h3>
+            <div class="code-window" id="verify-code">
+              <div class="code-window-bar"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span><span class="code-window-title">Terminal</span></div>
+              <div class="code-window-body">
+                <pre class="code-block">$ lala --version
+<span class="str">LALA v1.0.0 (V8 12.3.219.11)</span>
+
+$ lala --help
+<span class="str">Usage: lala [command] [file] [options]
+
+Commands:
+  run &lt;file&gt;         Run a .lala file
+  translate &lt;file&gt;   Translate to another dialect
+  check &lt;file&gt;       Type-check without running
+  init               Create a new lala.config.json
+  --version          Show version</span></pre>
+              </div>
+            </div>
+          </section>
+
+          <!-- ═══════════════ FIRST PROGRAM ═══════════════ -->
+          <section class="guide-section" id="first-program">
+            <h2>🚀 Your First LALA Program</h2>
+            <p>Let's write a classic "Hello, World!" to confirm everything works. We'll do it in all 4 dialects.</p>
+
+            <!-- Visual flow -->
+            <h3>How it works</h3>
+            <div class="visual-flow" id="visual-flow">
+              <div class="vf-step" id="vf-1">
+                <div class="vf-num">📄</div>
+                <div class="vf-title">Create file</div>
+                <div class="vf-desc">hello.lala</div>
+              </div>
+              <div class="vf-step" id="vf-2">
+                <div class="vf-num">✍️</div>
+                <div class="vf-title">Write code</div>
+                <div class="vf-desc">Any dialect</div>
+              </div>
+              <div class="vf-step" id="vf-3">
+                <div class="vf-num">▶️</div>
+                <div class="vf-title">Run it</div>
+                <div class="vf-desc">lala run hello.lala</div>
+              </div>
+              <div class="vf-step" id="vf-4">
+                <div class="vf-num">🎉</div>
+                <div class="vf-title">See output</div>
+                <div class="vf-desc">Hello, World!</div>
+              </div>
+            </div>
+
+            <h3>Choose your dialect</h3>
+            <div class="dialect-compare-grid" id="first-prog-grid">
+              <!-- English -->
+              <div class="dialect-compare-card" id="dc-en">
+                <div class="dc-header"><span class="dc-flag">🇬🇧</span><span class="dc-name">English</span><code class="dc-code">--dialect en</code></div>
+                <pre class="dc-sample"><span class="cmt">// hello.lala</span>
+<span class="kw">let</span> name = <span class="str">"World"</span>
+<span class="kw">print</span>(<span class="str">"Hello, "</span> + name + <span class="str">"!"</span>)</pre>
+              </div>
+              <!-- Yoruba -->
+              <div class="dialect-compare-card" id="dc-yo">
+                <div class="dc-header"><span class="dc-flag">🇳🇬</span><span class="dc-name">Yorùbá</span><code class="dc-code">--dialect yo</code></div>
+                <pre class="dc-sample"><span class="cmt">// kaabo.lala</span>
+<span class="kw">jẹ</span> orukọ = <span class="str">"Àgbáyé"</span>
+<span class="kw">sọ</span>(<span class="str">"Ẹ káàbọ̀, "</span> + orukọ + <span class="str">"!"</span>)</pre>
+              </div>
+              <!-- Hausa -->
+              <div class="dialect-compare-card" id="dc-ha">
+                <div class="dc-header"><span class="dc-flag">🇳🇬</span><span class="dc-name">Hausa</span><code class="dc-code">--dialect ha</code></div>
+                <pre class="dc-sample"><span class="cmt">// barka.lala</span>
+<span class="kw">bari</span> suna = <span class="str">"Duniya"</span>
+<span class="kw">nuna</span>(<span class="str">"Sannu, "</span> + suna + <span class="str">"!"</span>)</pre>
+              </div>
+              <!-- Igbo -->
+              <div class="dialect-compare-card" id="dc-ig">
+                <div class="dc-header"><span class="dc-flag">🇳🇬</span><span class="dc-name">Igbo</span><code class="dc-code">--dialect ig</code></div>
+                <pre class="dc-sample"><span class="cmt">// nnoo.lala</span>
+<span class="kw">were</span> aha = <span class="str">"Ụwa"</span>
+<span class="kw">bịpụta</span>(<span class="str">"Nnọọ, "</span> + aha + <span class="str">"!"</span>)</pre>
+              </div>
+            </div>
+
+            <h3>Run it</h3>
+            <div class="code-window" id="run-code-window">
+              <div class="code-window-bar"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span><span class="code-window-title">Terminal</span></div>
+              <div class="code-window-body">
+                <pre class="code-block"><span class="cmt"># Auto-detects dialect from the file</span>
+$ lala run hello.lala
+<span class="str">Hello, World!</span>
+
+<span class="cmt"># Force a specific dialect</span>
+$ lala run hello.lala <span class="kw">--dialect</span> yo
+<span class="str">Ẹ káàbọ̀, Àgbáyé!</span></pre>
+              </div>
+            </div>
+
+            <div class="guide-tip" id="guide-tip-1">
+              <span class="tip-icon">💡</span>
+              <div><strong>Skip the install!</strong> Try any code snippet right now in the <a href="playground.html" style="color:var(--lala-purple);font-weight:700">browser playground →</a> — no setup required.</div>
+            </div>
+          </section>
+
+          <!-- ═══════════════ DIALECTS ═══════════════ -->
+          <section class="guide-section" id="dialects">
+            <h2>🌍 Understanding Dialects</h2>
+            <p>LALA's dialect system lets you write the entire language — keywords, operators, even error messages — in your preferred language. Dialects are functionally identical; the runtime makes zero distinction.</p>
+
+            <h3>Setting your dialect</h3>
+            <div class="code-window" id="config-code">
+              <div class="code-window-bar"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span><span class="code-window-title">lala.config.json</span></div>
+              <div class="code-window-body">
+                <pre class="code-block">{
+  <span class="str">"dialect"</span>: <span class="str">"yoruba"</span>,
+  <span class="cmt">// Options: "english" | "yoruba" | "hausa" | "igbo"</span>
+
+  <span class="str">"interop"</span>: {
+    <span class="str">"js"</span>: <span class="bool">true</span>,
+    <span class="str">"python"</span>: <span class="bool">true</span>
+  },
+  <span class="str">"version"</span>: <span class="str">"1.0.0"</span>
+}</pre>
+              </div>
+            </div>
+
+            <h3>Keyword comparison</h3>
+            <div class="guide-note" id="kw-note">
+              <span class="note-icon">ℹ️</span>
+              <div>Every keyword has an exact translation in all dialects. Below are the most commonly used ones.</div>
+            </div>
+            <div class="cli-table-wrapper" id="kw-table-wrap">
+              <table class="cli-table" id="kw-table">
+                <thead>
+                  <tr><th>English</th><th>Yorùbá</th><th>Hausa</th><th>Igbo</th><th>Meaning</th></tr>
+                </thead>
+                <tbody id="kw-tbody">
+                  <tr><td>let</td><td>jẹ</td><td>bari</td><td>were</td><td>Declare variable</td></tr>
+                  <tr><td>print</td><td>sọ</td><td>nuna</td><td>bịpụta</td><td>Print to output</td></tr>
+                  <tr><td>if</td><td>bí</td><td>idan</td><td>ọ bụrụ</td><td>Conditional</td></tr>
+                  <tr><td>else</td><td>siwaju</td><td>ko haka</td><td>ma ọ bụ</td><td>Otherwise</td></tr>
+                  <tr><td>for</td><td>fun</td><td>don</td><td>maka</td><td>Loop</td></tr>
+                  <tr><td>while</td><td>nigba</td><td>yayin</td><td>oge</td><td>While loop</td></tr>
+                  <tr><td>function</td><td>iṣẹ</td><td>aiki</td><td>ọrụ</td><td>Define function</td></tr>
+                  <tr><td>return</td><td>padà</td><td>dawo</td><td>laghachi</td><td>Return value</td></tr>
+                  <tr><td>class</td><td>ẹgbẹ</td><td>ajin</td><td>otu</td><td>Define class</td></tr>
+                  <tr><td>true</td><td>òótọ́</td><td>gaskiya</td><td>ọ bụ eziokwu</td><td>Boolean true</td></tr>
+                  <tr><td>false</td><td>irọ</td><td>ƙarya</td><td>ọ bụ asị</td><td>Boolean false</td></tr>
+                  <tr><td>null</td><td>aṣefaanu</td><td>komai</td><td>efu</td><td>Null/None</td></tr>
+                  <tr><td>and</td><td>àti</td><td>da</td><td>na</td><td>Logical AND</td></tr>
+                  <tr><td>or</td><td>tabi</td><td>ko</td><td>ma ọ bụ</td><td>Logical OR</td></tr>
+                  <tr><td>not</td><td>kò</td><td>ba</td><td>abụghị</td><td>Logical NOT</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3>Translate between dialects</h3>
+            <div class="code-window" id="translate-code">
+              <div class="code-window-bar"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span><span class="code-window-title">Terminal</span></div>
+              <div class="code-window-body">
+                <pre class="code-block"><span class="cmt"># Translate a file from English to Yoruba</span>
+$ lala translate app.lala --to yo --out app_yoruba.lala
+
+<span class="cmt"># Translate to all dialects at once</span>
+$ lala translate app.lala --to all
+
+<span class="cmt"># In-place translation (overwrites original)</span>
+$ lala translate app.lala --to ha --in-place</pre>
+              </div>
+            </div>
+          </section>
+
+          <!-- ═══════════════ BASICS ═══════════════ -->
+          <section class="guide-section" id="basics">
+            <h2>📖 Language Basics</h2>
+            <p>All examples below use <strong>English dialect</strong> for clarity. Every keyword has an equivalent in Yorùbá, Hausa and Igbo.</p>
+
+            <h3>Variables &amp; Types</h3>
+            <div class="code-window" id="vars-code">
+              <div class="code-window-bar"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span><span class="code-window-title">variables.lala</span></div>
+              <div class="code-window-body">
+                <pre class="code-block"><span class="cmt">// Immutable (constant)</span>
+<span class="kw">let</span> name = <span class="str">"Emeka"</span>
+
+<span class="cmt">// Mutable</span>
+<span class="kw">var</span> score = <span class="num">0</span>
+score = <span class="num">42</span>
+
+<span class="cmt">// Types: string, number, bool, null, list, map</span>
+<span class="kw">let</span> isActive = <span class="bool">true</span>
+<span class="kw">let</span> items = [<span class="str">"one"</span>, <span class="str">"two"</span>, <span class="str">"three"</span>]
+<span class="kw">let</span> config = { <span class="str">"host"</span>: <span class="str">"localhost"</span>, <span class="str">"port"</span>: <span class="num">8080</span> }</pre>
+              </div>
+            </div>
+
+            <h3>Control Flow</h3>
+            <div class="code-window" id="flow-code">
+              <div class="code-window-bar"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span><span class="code-window-title">control.lala</span></div>
+              <div class="code-window-body">
+                <pre class="code-block"><span class="cmt">// If / else</span>
+<span class="kw">if</span> score > <span class="num">90</span> {
+  <span class="kw">print</span>(<span class="str">"Excellent!"</span>)
+} <span class="kw">else if</span> score > <span class="num">60</span> {
+  <span class="kw">print</span>(<span class="str">"Good job!"</span>)
+} <span class="kw">else</span> {
+  <span class="kw">print</span>(<span class="str">"Keep going!"</span>)
+}
+
+<span class="cmt">// For loop</span>
+<span class="kw">for</span> i <span class="kw">in</span> <span class="num">1</span>..<span class="num">5</span> {
+  <span class="kw">print</span>(<span class="str">"Count: "</span> + i)
+}
+
+<span class="cmt">// While loop</span>
+<span class="kw">var</span> n = <span class="num">0</span>
+<span class="kw">while</span> n < <span class="num">3</span> {
+  <span class="kw">print</span>(<span class="str">"n = "</span> + n)
+  n = n + <span class="num">1</span>
+}</pre>
+              </div>
+            </div>
+
+            <h3>Functions</h3>
+            <div class="code-window" id="fn-code">
+              <div class="code-window-bar"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span><span class="code-window-title">functions.lala</span></div>
+              <div class="code-window-body">
+                <pre class="code-block"><span class="cmt">// Basic function</span>
+<span class="kw">function</span> greet(name) {
+  <span class="kw">return</span> <span class="str">"Welcome, "</span> + name + <span class="str">"!"</span>
+}
+
+<span class="kw">print</span>(greet(<span class="str">"Aisha"</span>))  <span class="cmt">// Welcome, Aisha!</span>
+
+<span class="cmt">// Arrow-style (shorthand)</span>
+<span class="kw">let</span> double = (x) => x * <span class="num">2</span>
+
+<span class="cmt">// Async function</span>
+<span class="kw">async function</span> fetchData(url) {
+  <span class="kw">let</span> res = <span class="kw">await</span> js.fetch(url)
+  <span class="kw">return</span> res.json()
+}</pre>
+              </div>
+            </div>
+
+            <h3>Classes &amp; OOP</h3>
+            <div class="code-window" id="class-code">
+              <div class="code-window-bar"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span><span class="code-window-title">person.lala</span></div>
+              <div class="code-window-body">
+                <pre class="code-block"><span class="kw">class</span> Person {
+  <span class="kw">init</span>(name, age) {
+    <span class="kw">this</span>.name = name
+    <span class="kw">this</span>.age = age
+  }
+
+  greet() {
+    <span class="kw">return</span> <span class="str">"I am "</span> + <span class="kw">this</span>.name + <span class="str">", age "</span> + <span class="kw">this</span>.age
+  }
+}
+
+<span class="kw">let</span> p = <span class="kw">new</span> Person(<span class="str">"Fatima"</span>, <span class="num">25</span>)
+<span class="kw">print</span>(p.greet())
+<span class="cmt">// I am Fatima, age 25</span></pre>
+              </div>
+            </div>
+          </section>
+
+          <!-- ═══════════════ INTEROP ═══════════════ -->
+          <section class="guide-section" id="interop">
+            <h2>⚡ JS &amp; Python Interop</h2>
+            <p>One of LALA's superpowers: zero-boilerplate access to the world's two largest ecosystems.</p>
+
+            <h3>JavaScript Interop</h3>
+            <p>Since LALA runs inside the V8 engine, JS interop is native — no serialization, no overhead.</p>
+            <div class="code-window" id="js-interop-code">
+              <div class="code-window-bar"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span><span class="code-window-title">js_example.lala</span></div>
+              <div class="code-window-body">
+                <pre class="code-block"><span class="cmt">// Access any JS global directly</span>
+<span class="kw">let</span> pi = js.Math.PI
+<span class="kw">print</span>(pi)  <span class="cmt">// 3.141592653589793</span>
+
+<span class="cmt">// Import any npm package</span>
+<span class="kw">import</span> js <span class="str">"axios"</span> <span class="kw">as</span> axios
+
+<span class="kw">async function</span> main() {
+  <span class="kw">let</span> res = <span class="kw">await</span> axios.get(<span class="str">"https://api.github.com"</span>)
+  <span class="kw">print</span>(res.data.current_user_url)
+}
+
+main()</pre>
+              </div>
+            </div>
+
+            <h3>Python Interop</h3>
+            <p>Python runs as a subprocess communicating over JSON-RPC IPC. LALA returns transparent proxy objects.</p>
+            <div class="code-window" id="py-interop-code">
+              <div class="code-window-bar"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span><span class="code-window-title">ml_example.lala</span></div>
+              <div class="code-window-body">
+                <pre class="code-block"><span class="cmt">// Import Python library</span>
+<span class="kw">import</span> py <span class="str">"numpy"</span> <span class="kw">as</span> np
+
+<span class="kw">let</span> arr = np.array([<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>])
+<span class="kw">print</span>(np.mean(arr))   <span class="cmt">// 3.0</span>
+<span class="kw">print</span>(np.std(arr))    <span class="cmt">// 1.4142...</span>
+
+<span class="cmt">// Run arbitrary Python code</span>
+<span class="kw">let</span> result = py.eval(<span class="str">"sum([x**2 for x in range(10)])"</span>)
+<span class="kw">print</span>(result)  <span class="cmt">// 285</span></pre>
+              </div>
+            </div>
+
+            <div class="guide-tip" id="guide-tip-interop">
+              <span class="tip-icon">💡</span>
+              <div><strong>Python path:</strong> Make sure <code>python3</code> is on your PATH. Set a custom path in <code>lala.config.json</code> with <code>"pythonPath": "/usr/bin/python3"</code>.</div>
+            </div>
+          </section>
+
+          <!-- ═══════════════ CLI REFERENCE ═══════════════ -->
+          <section class="guide-section" id="cli-reference">
+            <h2>💻 CLI Reference</h2>
+            <p>The <code>lala</code> command-line tool gives you everything you need to run, build, test, and translate LALA programs.</p>
+            <div class="cli-table-wrapper" id="cli-table-wrap">
+              <table class="cli-table" id="cli-table">
+                <thead><tr><th>Command</th><th>Arguments / Flags</th><th>Description</th></tr></thead>
+                <tbody id="cli-tbody">
+                  <tr><td>lala run</td><td>&lt;file&gt; [--dialect] [--safe]</td><td>Execute a .lala file</td></tr>
+                  <tr><td>lala check</td><td>&lt;file&gt;</td><td>Static type/syntax check without running</td></tr>
+                  <tr><td>lala translate</td><td>&lt;file&gt; --to &lt;dialect&gt; [--out] [--in-place]</td><td>Translate between dialects</td></tr>
+                  <tr><td>lala init</td><td>[--dialect] [--with-python]</td><td>Create lala.config.json in current dir</td></tr>
+                  <tr><td>lala repl</td><td>[--dialect]</td><td>Start interactive REPL session</td></tr>
+                  <tr><td>lala build</td><td>&lt;file&gt; --out &lt;dir&gt;</td><td>Bundle into a standalone executable</td></tr>
+                  <tr><td>lala fmt</td><td>&lt;file|dir&gt;</td><td>Auto-format source files</td></tr>
+                  <tr><td>lala test</td><td>[--coverage]</td><td>Run unit tests in the project</td></tr>
+                  <tr><td>lala --version</td><td>—</td><td>Print version and runtime info</td></tr>
+                  <tr><td>lala --help</td><td>—</td><td>Show help for any command</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- ═══════════════ NEXT STEPS ═══════════════ -->
+          <section class="guide-section" id="next-steps">
+            <h2>🎯 Next Steps</h2>
+            <p>You've got the basics! Here's where to go next to master LALA.</p>
+            <div class="next-steps-grid" id="next-steps-grid">
+              <a href="how-it-works.html" class="next-step-card" id="ns-howitworks">
+                <div class="ns-icon">🔬</div>
+                <h3>How It Works</h3>
+                <p>Dive into the compiler pipeline, AST, V8 runtime, and interop architecture.</p>
+              </a>
+              <a href="playground.html" class="next-step-card" id="ns-playground">
+                <div class="ns-icon">🧪</div>
+                <h3>Playground</h3>
+                <p>Experiment with all the examples from this guide — no install needed.</p>
+              </a>
+              <a href="showcase.html" class="next-step-card" id="ns-showcase">
+                <div class="ns-icon">🚀</div>
+                <h3>Project Showcase</h3>
+                <p>See what the community has built with LALA for inspiration.</p>
+              </a>
+              <a href="community.html" class="next-step-card" id="ns-community">
+                <div class="ns-icon">💬</div>
+                <h3>Community</h3>
+                <p>Ask questions, share ideas, report bugs, and request features.</p>
+              </a>
+            </div>
+          </section>
+
+        </div><!-- /guide-content -->
+      </div><!-- /guide-layout -->
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="margin-bottom:.75rem"><div class="logo-mark">L</div><span class="logo-text">LALA</span><span class="logo-version">v1.0</span></a>
+          <p>Empowering polyglot indigenous computing.</p>
+          <div class="footer-langs"><span>English</span> · <span>Yorùbá</span> · <span>Hausa</span> · <span>Igbo</span></div>
+        </div>
+        <div class="footer-col"><h4>Learn</h4><a href="how-it-works.html">How It Works</a><a href="starter-guide.html">Starter Guide</a><a href="playground.html">Playground</a></div>
+        <div class="footer-col"><h4>Community</h4><a href="showcase.html">Project Showcase</a><a href="community.html">Community Board</a></div>
+        <div class="footer-col"><h4>Download</h4><a href="index.html#downloads">All Platforms</a></div>
+      </div>
+      <div class="footer-bottom"><p>© 2024 LALA Programming Language.</p><p>Built with ❤️ for African developers.</p></div>
+    </div>
+  </footer>
+
+  <script src="js/global.js"></script>
+  <script src="js/guide.js"></script>
+</body>
+</html>

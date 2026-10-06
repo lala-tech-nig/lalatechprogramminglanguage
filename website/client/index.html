@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LALA — Nigeria's First Programming Language | For All of Africa</title>
+  <meta name="description" content="LALA is Nigeria's first full programming language, launched on October 1st — Nigeria Independence Day. Write code in English, Yorùbá, Hausa, or Igbo. Open source, community driven, built for all of Africa and the world." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" id="nav-logo">
+        <div class="logo-mark">L</div>
+        <span class="logo-text">LALA</span>
+        <span class="logo-version">v1.0</span>
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html"          class="nav-link active" id="nl-home">Home</a>
+        <a href="how-it-works.html"   class="nav-link" id="nl-how">How It Works</a>
+        <a href="starter-guide.html"  class="nav-link" id="nl-start">Get Started</a>
+        <a href="playground.html"     class="nav-link" id="nl-play">Playground</a>
+        <a href="showcase.html"       class="nav-link" id="nl-show">Showcase</a>
+        <a href="community.html"      class="nav-link" id="nl-comm">Community</a>
+      </div>
+      <div class="nav-actions">
+        <a href="starter-guide.html" class="btn btn-secondary btn-sm" id="nav-docs-btn">Docs</a>
+        <a href="playground.html" class="btn btn-primary btn-sm" id="nav-try-btn">Try LALA Free</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <!-- Video background -->
+    <div class="hero-video-wrap" id="hero-video-wrap">
+      <video autoplay muted loop playsinline id="hero-video">
+        <source src="assets/hero-bg.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <!-- Background gradient shapes -->
+    <div class="hero-bg-shapes" aria-hidden="true">
+      <div class="hero-shape hero-shape-1"></div>
+      <div class="hero-shape hero-shape-2"></div>
+      <div class="hero-shape hero-shape-3"></div>
+    </div>
+
+    <div class="hero-content-wrap">
+      <div class="container">
+        <div class="hero-inner">
+
+          <!-- Left: Text -->
+          <div class="hero-text-col" id="hero-text-col">
+            <div class="hero-announce-badge" id="hero-badge">
+              <span class="hero-badge-dot">🇳🇬 OCT 1</span>
+              Launched on Nigeria Independence Day · Open Source
+            </div>
+
+            <h1 class="hero-title" id="hero-title">
+              Nigeria's First<br />
+              <span class="hero-title-line2" id="hero-title-accent">Programming Language</span>
+            </h1>
+
+            <p class="hero-subtitle" id="hero-subtitle">
+              Born in Nigeria on <strong>October 1st</strong> — Independence Day. LALA lets you write real code in <strong>Yorùbá</strong>, <strong>Hausa</strong>, <strong>Igbo</strong>, or <strong>English</strong>. Built for all of <strong>Africa</strong>, expanding to every language on Earth. <strong>Free. Open source. Community driven.</strong>
+            </p>
+
+            <div class="hero-ctas" id="hero-ctas">
+              <a href="starter-guide.html" class="btn btn-primary btn-lg" id="hero-start-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+                Get Started Free
+              </a>
+              <a href="playground.html" class="btn btn-secondary btn-lg" id="hero-play-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Try in Browser
+              </a>
+            </div>
+
+            <div class="hero-langs-bar" id="hero-langs-bar">
+              <span class="hero-langs-label">Write in:</span>
+              <div class="hero-lang-chips">
+                <span class="hero-lang-chip chip-en">🇬🇧 English</span>
+                <span class="hero-lang-chip chip-yo">Yorùbá</span>
+                <span class="hero-lang-chip chip-ha">Hausa</span>
+                <span class="hero-lang-chip chip-ig">Igbo</span>
+                <span class="hero-lang-chip" style="background:rgba(0,0,0,.05);color:var(--text-muted);font-style:italic">+54 African langs soon</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Image Frame -->
+          <div class="hero-visual-col" id="hero-visual-col">
+            <div class="hero-image-frame" id="hero-image-frame">
+              <img
+                src="assets/images/hero-banner.jpg"
+                alt="LALA Programming Language — Multilingual code editor"
+                id="hero-banner-img"
+              />
+            </div>
+
+            <!-- Floating code badge 1 -->
+            <div class="hero-float-badge hero-float-badge-1" id="hfb-1">
+              <div class="hfb-label">Active Dialect</div>
+              <div class="hfb-value"><span class="hfb-dot"></span> <span id="hero-lang-cycle">English</span></div>
+            </div>
+
+            <!-- Floating badge 2 -->
+            <div class="hero-float-badge hero-float-badge-2" id="hfb-2">
+              <div class="hfb-label">🌍 Oct 1, 2024 · Launch Day</div>
+              <div class="hfb-value">🇳🇬 Nigeria Independence Day</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-line"></div>
+      <span class="scroll-label">Scroll</span>
+    </div>
+  </section>
+
+  <!-- ============ STATS BAR ============ -->
+  <section class="stats-bar" id="stats-bar">
+    <div class="container">
+      <div class="stats-inner" id="stats-inner">
+        <div class="stat-item" id="si-0">
+          <div>
+            <div class="stat-number-wrap"><span class="stat-num" style="font-size:1.4rem">#1</span></div>
+            <div class="stat-info-label">In Nigeria</div>
+            <div class="stat-info-sub">First full language</div>
+          </div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item" id="si-1">
+          <div>
+            <div class="stat-number-wrap"><span class="stat-num" id="sn-1">4</span><span class="stat-suffix">+</span></div>
+            <div class="stat-info-label">Native Dialects</div>
+            <div class="stat-info-sub">EN · YO · HA · IG</div>
+          </div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item" id="si-2">
+          <div>
+            <div class="stat-number-wrap"><span class="stat-num">54</span><span class="stat-suffix">+</span></div>
+            <div class="stat-info-label">African Languages</div>
+            <div class="stat-info-sub">Coming soon</div>
+          </div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item" id="si-3">
+          <div>
+            <div class="stat-number-wrap"><span class="stat-num" id="sn-3">2M</span><span class="stat-suffix">+</span></div>
+            <div class="stat-info-label">npm Packages</div>
+            <div class="stat-info-sub">Zero boilerplate</div>
+          </div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item" id="si-4">
+          <div>
+            <div class="stat-number-wrap"><span class="stat-num">Oct 1</span></div>
+            <div class="stat-info-label">Launch Date</div>
+            <div class="stat-info-sub">Independence Day 🇳🇬</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURES ============ -->
+  <section class="features-section" id="features-section">
+    <div class="container">
+      <div class="features-header" data-reveal>
+        <div class="section-eyebrow">Why LALA</div>
+        <h2>Nigeria built it. Africa owns it.</h2>
+        <p>LALA is the first programming language born in Nigeria — open source, community driven, and designed from the ground up to serve every African language and eventually every language on Earth.</p>
+      </div>
+      <div class="features-grid" id="features-grid">
+        <div class="feature-card" data-reveal id="fc-1">
+          <div class="feature-icon fi-purple">🌍</div>
+          <h3>4 Native Dialects</h3>
+          <p>Write code in English, Yorùbá, Hausa, or Igbo. Every keyword, operator, and construct has a native translation. Auto-detected from your source file.</p>
+        </div>
+        <div class="feature-card" data-reveal id="fc-2">
+          <div class="feature-icon fi-teal">⚡</div>
+          <h3>Zero-Boilerplate JS Interop</h3>
+          <p>Access any npm package, Node.js built-in, or V8 global with <code>js.Math</code>, <code>import js "axios"</code>. No binding files, no wrappers.</p>
+        </div>
+        <div class="feature-card" data-reveal id="fc-3">
+          <div class="feature-icon fi-gold">🐍</div>
+          <h3>Python 3.14 Bridge</h3>
+          <p>Full PyPI access via JSON-RPC IPC. Use numpy, pandas, tensorflow from LALA with transparent proxy objects. ML-ready out of the box.</p>
+        </div>
+        <div class="feature-card" data-reveal id="fc-4">
+          <div class="feature-icon fi-green">🔄</div>
+          <h3>Dialect Translator</h3>
+          <p>Instantly translate any <code>.lala</code> file between all 4 dialects with <code>lala translate file.lala --to yo</code>. Preserves your identifiers and strings.</p>
+        </div>
+        <div class="feature-card" data-reveal id="fc-5">
+          <div class="feature-icon fi-coral">🎯</div>
+          <h3>Modern OOP & Closures</h3>
+          <p>First-class functions, closures, classes with <code>init</code> constructors, lexical scoping, and full <code>async/await</code> concurrency on the V8 event loop.</p>
+        </div>
+        <div class="feature-card" data-reveal id="fc-6">
+          <div class="feature-icon fi-violet">🔒</div>
+          <h3>Sandboxed Security</h3>
+          <p>Run with <code>--safe</code> flag. Fine-grained permissions in <code>lala.config.json</code> control filesystem, network, and interop access per project.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MEDIA: DIALECTS VISUAL ============ -->
+  <section class="media-showcase" id="media-dialects">
+    <div class="container">
+      <div class="media-showcase-inner" id="msi-dialects">
+        <div class="media-text-col" data-reveal>
+          <div class="section-eyebrow">Multilingual First</div>
+          <h2>One Language, Four Voices</h2>
+          <p>LALA's Unicode lexer detects your dialect automatically. Every keyword maps to a canonical internal token — meaning the parser sees identical structures whether you write <code>for</code>, <code>fun</code>, <code>don</code>, or <code>maka</code>.</p>
+          <ul class="media-points" id="media-points-dialects">
+            <li class="media-point">
+              <div class="mp-icon">🔍</div>
+              <div class="mp-text">
+                <strong>Auto dialect detection</strong>
+                <span>Scans signature vocabulary if lala.config.json is absent</span>
+              </div>
+            </li>
+            <li class="media-point">
+              <div class="mp-icon">🔀</div>
+              <div class="mp-text">
+                <strong>Canonical tokenization</strong>
+                <span>All dialects compile to the same AST — same runtime, same performance</span>
+              </div>
+            </li>
+            <li class="media-point">
+              <div class="mp-icon">🌐</div>
+              <div class="mp-text">
+                <strong>Bidirectional translation</strong>
+                <span>Any file can be translated to any other dialect in milliseconds</span>
+              </div>
+            </li>
+          </ul>
+          <a href="how-it-works.html" class="btn btn-outline-purple" id="mdi-learn-btn">Learn the architecture →</a>
+        </div>
+        <div class="media-image-col" data-reveal>
+          <div class="media-image-frame" id="dialects-img-frame">
+            <img src="assets/images/dialects-feature.jpg" alt="LALA multilingual dialect synergy diagram" id="dialects-img" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DIALECT CODE SHOWCASE ============ -->
+  <section class="dialect-section" id="dialect-section">
+    <div class="container">
+      <div class="dialect-section-header" data-reveal>
+        <div class="section-eyebrow">Live Examples</div>
+        <h2>Same logic, your language</h2>
+        <p style="color:var(--text-secondary);max-width:520px;margin:0 auto">Every LALA program can be written in any dialect. Here's the same program across all four.</p>
+      </div>
+
+      <div class="dialect-tabs-row" id="dialect-tabs-row">
+        <button class="dialect-tab active" data-dialect="english" id="dtab-en">🇬🇧 English</button>
+        <button class="dialect-tab" data-dialect="yoruba" id="dtab-yo">🇳🇬 Yorùbá</button>
+        <button class="dialect-tab" data-dialect="hausa" id="dtab-ha">🇳🇬 Hausa</button>
+        <button class="dialect-tab" data-dialect="igbo" id="dtab-ig">🇳🇬 Igbo</button>
+      </div>
+
+      <div class="dialect-showcase-grid" id="dialect-showcase-grid">
+        <div class="dialect-code-panel" id="dialect-code-panel">
+          <div class="dialect-code-bar">
+            <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+            <span class="dialect-file-label" id="dialect-file-label">greetings.lala</span>
+          </div>
+          <div class="dialect-code-body">
+            <pre id="dialect-code-display"></pre>
+          </div>
+        </div>
+
+        <div class="dialect-info-panel" id="dialect-info-panel">
+          <div class="dialect-stat-card" id="dsc-1">
+            <div class="dsc-icon">📝</div>
+            <div class="dsc-title">Readable syntax</div>
+            <div class="dsc-text">LALA's grammar is designed to be read aloud in your language naturally. No symbol soup — logical operators are words: <code>and</code>, <code>or</code>, <code>not</code>.</div>
+          </div>
+          <div class="dialect-stat-card" id="dsc-2">
+            <div class="dsc-icon">⚙️</div>
+            <div class="dsc-title">Runs identically</div>
+            <div class="dsc-text">The runtime makes zero distinction between dialects. Your Yorùbá code runs at exactly the same speed as the English equivalent.</div>
+          </div>
+          <div class="dialect-stat-card" id="dsc-3">
+            <div class="dsc-icon">🔗</div>
+            <div class="dsc-title">Try it now</div>
+            <div class="dsc-text">Paste any snippet into the playground to run it live in your browser — no installation needed.</div>
+            <a href="playground.html" class="btn btn-primary btn-sm" style="margin-top:.75rem;align-self:flex-start" id="dsc-try-btn">Open Playground →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MEDIA: INTEROP ============ -->
+  <section class="media-showcase" id="media-interop" style="background:var(--bg-primary)">
+    <div class="container">
+      <div class="media-showcase-inner reverse" id="msi-interop">
+        <div class="media-text-col" data-reveal>
+          <div class="section-eyebrow">Ecosystem Access</div>
+          <h2>Tap into npm &amp; PyPI — instantly</h2>
+          <p>LALA runs inside the Node.js V8 runtime. JavaScript interop is zero-copy — no serialization. Python runs via a lightweight JSON-RPC subprocess with automatic proxy cleanup.</p>
+          <ul class="media-points" id="media-points-interop">
+            <li class="media-point">
+              <div class="mp-icon">⬡</div>
+              <div class="mp-text">
+                <strong>2 million+ npm packages</strong>
+                <span>import js "express" as express — that's it</span>
+              </div>
+            </li>
+            <li class="media-point">
+              <div class="mp-icon">🐍</div>
+              <div class="mp-text">
+                <strong>Full Python ML stack</strong>
+                <span>numpy, pandas, tensorflow, transformers — all accessible</span>
+              </div>
+            </li>
+            <li class="media-point">
+              <div class="mp-icon">🏎️</div>
+              <div class="mp-text">
+                <strong>V8-native performance</strong>
+                <span>Same engine as Chrome and Node.js. No overhead.</span>
+              </div>
+            </li>
+          </ul>
+          <a href="starter-guide.html#interop" class="btn btn-outline-purple" id="interop-learn-btn">See interop examples →</a>
+        </div>
+        <div class="media-image-col" data-reveal>
+          <div class="media-image-frame" id="interop-img-frame">
+            <img src="assets/images/interop-visual.jpg" alt="LALA JavaScript and Python interoperability diagram" id="interop-img" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DEVELOPER PHOTO SECTION ============ -->
+  <section class="dev-photo-section" id="dev-photo-section">
+    <div class="container">
+      <div class="dev-photo-inner" id="dev-photo-inner">
+        <div class="dev-photo-frame" data-reveal id="dev-photo-frame">
+          <img src="assets/images/developer-photo.jpg" alt="African developer coding with LALA programming language" id="dev-photo" />
+          <div class="dev-photo-accent"></div>
+          <div class="dev-photo-badge" id="dev-photo-badge">
+            <div class="dpb-num">Oct 1</div>
+            <div class="dpb-text">🇳🇬 Independence<br/>Day Launch</div>
+          </div>
+        </div>
+        <div class="dev-text-col" data-reveal id="dev-text-col">
+          <div class="section-eyebrow">Nigeria · Africa · The World</div>
+          <h2>Born in Nigeria. Built for Africa. Open to the World.</h2>
+          <p>On <strong>October 1st, 2024</strong> — Nigeria's Independence Day — LALA became Nigeria's first full programming language. It is not just a tool; it is a statement: Africa does not just consume technology, <strong>Africa creates it.</strong></p>
+          <p>Starting with Nigeria's three major languages, LALA's roadmap covers all 54+ African language families, and will gradually expand to every major language on Earth. The code you write today shapes what millions of developers can write tomorrow.</p>
+          <blockquote class="dev-quote" id="dev-quote">
+            "When I write code in Yorùbá, I'm not translating my thoughts — I'm expressing them. LALA changed how I build software. This is what independence really means."
+            <br /><strong style="display:block;margin-top:.5rem;font-style:normal;color:var(--lala-purple)">— Babatunde Adeyemi, Full-Stack Developer · Lagos</strong>
+          </blockquote>
+          <div style="display:flex;gap:var(--space-md);flex-wrap:wrap">
+            <a href="showcase.html" class="btn btn-primary" id="dp-showcase-btn">See Community Projects</a>
+            <a href="https://github.com/lala-lang/lala" target="_blank" rel="noopener" class="btn btn-secondary" id="dp-github-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              Star on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PLAYGROUND PREVIEW ============ -->
+  <section class="media-showcase" id="playground-preview-section" style="background:var(--bg-secondary)">
+    <div class="container">
+      <div class="media-showcase-inner" id="msi-playground">
+        <div class="media-text-col" data-reveal>
+          <div class="section-eyebrow">Try It Now</div>
+          <h2>Code LALA right in your browser</h2>
+          <p>No installation needed. Our browser-based playground supports all 4 dialects with live syntax highlighting, 9 built-in examples, and instant output.</p>
+          <ul class="media-points">
+            <li class="media-point">
+              <div class="mp-icon">✨</div>
+              <div class="mp-text"><strong>Live syntax highlighting</strong><span>Color-coded for all 4 language dialects</span></div>
+            </li>
+            <li class="media-point">
+              <div class="mp-icon">📚</div>
+              <div class="mp-text"><strong>9 code examples</strong><span>From Hello World to OOP and async/await</span></div>
+            </li>
+            <li class="media-point">
+              <div class="mp-icon">🚀</div>
+              <div class="mp-text"><strong>Instant execution</strong><span>Run code with Ctrl+Enter</span></div>
+            </li>
+          </ul>
+          <a href="playground.html" class="btn btn-primary btn-lg" id="pp-open-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Open the Playground
+          </a>
+        </div>
+        <div class="media-image-col" data-reveal>
+          <div class="media-image-frame">
+            <img src="assets/images/playground-preview.jpg" alt="LALA code editor playground screenshot" id="playground-preview-img" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DOWNLOADS ============ -->
+  <section class="downloads-section" id="downloads">
+    <div class="container">
+      <div class="downloads-header" data-reveal>
+        <div class="section-eyebrow">Download LALA</div>
+        <h2>Install on any platform</h2>
+        <p>Native installers for all major operating systems. Or install via npm in seconds.</p>
+      </div>
+
+      <div class="download-cards" id="download-cards">
+        <div class="download-card" data-reveal id="dl-windows">
+          <div class="download-os-icon">🪟</div>
+          <div class="download-os-name">Windows</div>
+          <span class="download-os-version">Windows 10 / 11 (x64)</span>
+          <a href="downloads/Setup-Lala-v1.0.0-win.exe" class="btn btn-primary" id="dl-win-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            Download .exe
+          </a>
+          <div class="download-file-size">~28 MB · Includes Node.js runtime</div>
+        </div>
+
+        <div class="download-card" data-reveal id="dl-mac">
+          <div class="download-os-icon">🍎</div>
+          <div class="download-os-name">macOS</div>
+          <span class="download-os-version">macOS 12+ · Apple Silicon &amp; Intel</span>
+          <a href="downloads/Setup-Lala-v1.0.0-mac.dmg" class="btn btn-primary" id="dl-mac-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            Download .dmg
+          </a>
+          <div class="download-file-size">~31 MB · Universal binary</div>
+        </div>
+
+        <div class="download-card" data-reveal id="dl-linux">
+          <div class="download-os-icon">🐧</div>
+          <div class="download-os-name">Linux</div>
+          <span class="download-os-version">Ubuntu, Debian, Fedora, Arch</span>
+          <a href="downloads/lala-v1.0.0-linux.tar.gz" class="btn btn-primary" id="dl-linux-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            Download .tar.gz
+          </a>
+          <div class="download-file-size">~24 MB · .deb &amp; .rpm also available</div>
+        </div>
+      </div>
+
+      <!-- npm row -->
+      <div class="download-npm-row" id="dl-npm-row" data-reveal>
+        <div>
+          <div class="npm-label">Or install globally via npm</div>
+          <div class="npm-command" id="npm-command-box">
+            <code>npm install -g lala-lang</code>
+            <button class="copy-npm-btn" onclick="copyNpm()" id="copy-npm-btn" title="Copy to clipboard">📋</button>
+          </div>
+        </div>
+        <a href="starter-guide.html" class="btn btn-outline-purple" id="npm-guide-btn">Setup Guide →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ROADMAP ============ -->
+  <section style="padding:6rem 0;background:var(--bg-secondary);" id="roadmap">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:3.5rem" data-reveal>
+        <div class="section-eyebrow">Open Source Roadmap</div>
+        <h2>From Nigeria, to Africa, to the World</h2>
+        <p style="max-width:580px;margin:0 auto">LALA's expansion is community voted and transparent. Here is where we are going — and every milestone is open on GitHub.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-xl)" id="roadmap-grid">
+        <!-- Phase 1 -->
+        <div style="background:var(--bg-primary);border:2px solid var(--lala-purple);border-radius:var(--radius-xl);padding:var(--space-2xl);position:relative;box-shadow:var(--shadow-purple)" data-reveal id="roadmap-p1">
+          <div style="position:absolute;top:-14px;left:var(--space-xl);background:var(--lala-purple);color:white;font-size:.72rem;font-weight:800;padding:.2rem .75rem;border-radius:var(--radius-full);text-transform:uppercase;letter-spacing:.08em">✅ Now Live</div>
+          <div style="font-size:2rem;margin-bottom:var(--space-md)">🇳🇬</div>
+          <h3 style="font-size:1.1rem;margin-bottom:.5rem">Phase 1 — Nigeria</h3>
+          <p style="font-size:.875rem;color:var(--text-secondary);margin-bottom:var(--space-lg)">Launched October 1st, 2024 — Nigeria's Independence Day.</p>
+          <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.5rem">
+            <li style="font-size:.85rem;color:var(--text-secondary)">✅ English dialect</li>
+            <li style="font-size:.85rem;color:var(--text-secondary)">✅ Yorùbá dialect</li>
+            <li style="font-size:.85rem;color:var(--text-secondary)">✅ Hausa dialect</li>
+            <li style="font-size:.85rem;color:var(--text-secondary)">✅ Igbo dialect</li>
+            <li style="font-size:.85rem;color:var(--text-secondary)">✅ JS + Python interop</li>
+            <li style="font-size:.85rem;color:var(--text-secondary)">✅ Open sourced on GitHub</li>
+          </ul>
+        </div>
+        <!-- Phase 2 -->
+        <div style="background:var(--bg-primary);border:1.5px solid var(--border-light);border-radius:var(--radius-xl);padding:var(--space-2xl);position:relative;box-shadow:var(--shadow-xs)" data-reveal id="roadmap-p2">
+          <div style="position:absolute;top:-14px;left:var(--space-xl);background:var(--lala-gold);color:white;font-size:.72rem;font-weight:800;padding:.2rem .75rem;border-radius:var(--radius-full);text-transform:uppercase;letter-spacing:.08em">🚧 Coming Next</div>
+          <div style="font-size:2rem;margin-bottom:var(--space-md)">🌍</div>
+          <h3 style="font-size:1.1rem;margin-bottom:.5rem">Phase 2 — All of Africa</h3>
+          <p style="font-size:.875rem;color:var(--text-secondary);margin-bottom:var(--space-lg)">Expanding across the continent with community-contributed dialects.</p>
+          <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.5rem">
+            <li style="font-size:.85rem;color:var(--text-secondary)">🔜 Swahili (East Africa)</li>
+            <li style="font-size:.85rem;color:var(--text-secondary)">🔜 Amharic (Ethiopia)</li>
+            <li style="font-size:.85rem;color:var(--text-secondary)">🔜 Zulu / Xhosa (South Africa)</li>
+            <li style="font-size:.85rem;color:var(--text-secondary)">🔜 Twi / Akan (Ghana)</li>
+            <li style="font-size:.85rem;color:var(--text-secondary)">🔜 Wolof (Senegal)</li>
+            <li style="font-size:.85rem;color:var(--text-secondary)">🔜 Arabic (North Africa)</li>
+          </ul>
+        </div>
+        <!-- Phase 3 -->
+        <div style="background:var(--bg-primary);border:1.5px solid var(--border-light);border-radius:var(--radius-xl);padding:var(--space-2xl);position:relative;box-shadow:var(--shadow-xs)" data-reveal id="roadmap-p3">
+          <div style="position:absolute;top:-14px;left:var(--space-xl);background:var(--lala-teal);color:white;font-size:.72rem;font-weight:800;padding:.2rem .75rem;border-radius:var(--radius-full);text-transform:uppercase;letter-spacing:.08em">🌐 The Vision</div>
+          <div style="font-size:2rem;margin-bottom:var(--space-md)">🌐</div>
+          <h3 style="font-size:1.1rem;margin-bottom:.5rem">Phase 3 — Global Languages</h3>
+          <p style="font-size:.875rem;color:var(--text-secondary);margin-bottom:var(--space-lg)">Every programmer on Earth should code in their own language.</p>
+          <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.5rem">
+            <li style="font-size:.85rem;color:var(--text-secondary)">🌐 Hindi / Bengali</li>
+            <li style="font-size:.85rem;color:var(--text-secondary)">🌐 Mandarin / Cantonese</li>
+            <li style="font-size:.85rem;color:var(--text-secondary)">🌐 Spanish / Portuguese</li>
+            <li style="font-size:.85rem;color:var(--text-secondary)">🌐 French / German</li>
+            <li style="font-size:.85rem;color:var(--text-secondary)">🌐 Japanese / Korean</li>
+            <li style="font-size:.85rem;color:var(--text-secondary)">🌐 Russian / Arabic</li>
+          </ul>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:var(--space-2xl)" data-reveal>
+        <a href="https://github.com/lala-lang/lala" target="_blank" rel="noopener" class="btn btn-outline-purple btn-lg" id="roadmap-github-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          View the Full Roadmap on GitHub
+        </a>
+        <p style="margin-top:1rem;font-size:.85rem;color:var(--text-muted)">Contribute a dialect · Vote on features · File an issue</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta-section" id="cta-section">
+    <div class="container">
+      <div class="cta-inner" data-reveal>
+        <div class="section-eyebrow" style="background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.15)">🇳🇬 October 1st · Independence Day</div>
+        <h2>Nigeria's gift to the programming world.</h2>
+        <p>Code in your language. Build for your people. Share with the world. LALA is free, open source, and community driven — forever.</p>
+        <div class="cta-buttons" id="cta-buttons">
+          <a href="starter-guide.html" class="btn btn-xl btn-cta-white" id="cta-start-btn">Start Building — Free &amp; Open Source</a>
+          <a href="https://github.com/lala-lang/lala" target="_blank" rel="noopener" class="btn btn-xl btn-cta-outline" id="cta-github-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            Star on GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="margin-bottom:.75rem">
+            <div class="logo-mark">L</div>
+            <span class="logo-text">LALA</span>
+            <span class="logo-version">v1.0</span>
+          </a>
+          <p>Nigeria's first programming language. Open source, community driven. Born October 1st — Independence Day. For Africa and the world.</p>
+          <div class="footer-langs">
+            <span>English</span> · <span>Yorùbá</span> · <span>Hausa</span> · <span>Igbo</span>
+            <span style="opacity:.4">· +54 African langs (soon)</span>
+          </div>
+          <a href="https://github.com/lala-lang/lala" target="_blank" rel="noopener"
+            style="display:inline-flex;align-items:center;gap:.4rem;margin-top:.75rem;font-size:.82rem;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s"
+            id="footer-github-link">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width:15px;height:15px"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            github.com/lala-lang/lala
+          </a>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="starter-guide.html">Starter Guide</a>
+          <a href="playground.html">Playground</a>
+          <a href="starter-guide.html#cli-reference">CLI Reference</a>
+        </div>
+        <div class="footer-col">
+          <h4>Community</h4>
+          <a href="showcase.html">Project Showcase</a>
+          <a href="community.html">Community Board</a>
+          <a href="community.html#bugs">Report a Bug</a>
+          <a href="#roadmap">Roadmap</a>
+        </div>
+        <div class="footer-col">
+          <h4>Open Source</h4>
+          <a href="https://github.com/lala-lang/lala" target="_blank" rel="noopener">GitHub Repository</a>
+          <a href="https://github.com/lala-lang/lala/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contribute</a>
+          <a href="https://github.com/lala-lang/lala/issues" target="_blank" rel="noopener">File an Issue</a>
+          <a href="#downloads">Download</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 LALA Programming Language · MIT License · Open Source</p>
+        <p>🇳🇬 Made in Nigeria · Built for Africa · Open to the World</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/global.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "lala",
+  "version": "1.0.0",
+  "description": "Lala: Multilingual Programming Language supporting English, Yoruba, Hausa, and Igbo with seamless JavaScript and Python 3.14 interoperability.",
+  "main": "src/index.js",
+  "bin": {
+    "lala": "./bin/lala.js",
+    "wazobia": "./bin/lala.js"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "node bin/lala.js",
+    "serve": "node bin/serve.js",
+    "test": "node test/run_tests.js"
+  },
+  "keywords": [
+    "lala",
+    "lala-lang",
+    "programming-language",
+    "multilingual",
+    "yoruba",
+    "hausa",
+    "igbo",
+    "javascript-interop",
+    "python-interop"
+  ],
+  "author": "Lala Core Team",
+  "license": "MIT"
+}

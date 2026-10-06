@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LALA Playground — Code in Your Browser</title>
+  <meta name="description" content="Try LALA programming language directly in your browser. Write and run LALA code in English, Yorùbá, Hausa, or Igbo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/playground.css" />
+</head>
+<body>
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><div class="logo-mark">L</div><span class="logo-text">LALA</span><span class="logo-version">v1.0</span></a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html" class="nav-link" id="nav-home">Home</a>
+        <a href="how-it-works.html" class="nav-link" id="nav-how">How It Works</a>
+        <a href="starter-guide.html" class="nav-link" id="nav-starter">Get Started</a>
+        <a href="playground.html" class="nav-link active" id="nav-play">Playground</a>
+        <a href="showcase.html" class="nav-link" id="nav-showcase">Showcase</a>
+        <a href="community.html" class="nav-link" id="nav-community">Community</a>
+      </div>
+      <div class="nav-actions">
+        <a href="index.html#downloads" class="btn btn-primary btn-sm" id="nav-download-btn">Download</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="playground-layout" id="playground-layout">
+    <!-- Left Panel: Editor -->
+    <div class="playground-left" id="playground-left">
+      <!-- Toolbar -->
+      <div class="playground-toolbar" id="playground-toolbar">
+        <div class="toolbar-left">
+          <span class="playground-title">🧪 LALA Playground</span>
+          <select class="dialect-select" id="dialect-select">
+            <option value="english">English</option>
+            <option value="yoruba">Yorùbá</option>
+            <option value="hausa">Hausa</option>
+            <option value="igbo">Igbo</option>
+          </select>
+        </div>
+        <div class="toolbar-right">
+          <div class="example-select-wrapper">
+            <select class="example-select" id="example-select">
+              <option value="">Load Example…</option>
+              <option value="hello">Hello World</option>
+              <option value="loops">For Loops</option>
+              <option value="functions">Functions & Closures</option>
+              <option value="oop">OOP — BankAccount</option>
+              <option value="async">Async/Await</option>
+              <option value="js_interop">JS Interop</option>
+              <option value="yoruba_hello">Yorùbá Hello</option>
+              <option value="hausa_hello">Hausa Hello</option>
+              <option value="igbo_hello">Igbo Hello</option>
+            </select>
+          </div>
+          <button class="toolbar-btn" id="clear-btn" title="Clear editor">🗑 Clear</button>
+          <button class="toolbar-btn toolbar-btn-primary" id="run-btn" title="Run LALA code (Ctrl+Enter)">
+            <span id="run-icon">▶</span> Run
+          </button>
+        </div>
+      </div>
+
+      <!-- Editor -->
+      <div class="editor-container" id="editor-container">
+        <div class="line-numbers" id="line-numbers"></div>
+        <textarea
+          class="code-editor"
+          id="code-editor"
+          spellcheck="false"
+          autocorrect="off"
+          autocapitalize="off"
+          placeholder="// Write your LALA code here...&#10;let name = &quot;World&quot;&#10;print(&quot;Hello, &quot; + name + &quot;!&quot;)"
+        ></textarea>
+        <div class="editor-highlight" id="editor-highlight" aria-hidden="true">
+          <pre class="editor-highlight-pre" id="editor-highlight-pre"></pre>
+        </div>
+      </div>
+
+      <!-- Status bar -->
+      <div class="editor-status" id="editor-status">
+        <span id="status-lang">English Dialect</span>
+        <span>·</span>
+        <span id="status-lines">0 lines</span>
+        <span>·</span>
+        <span>Ctrl+Enter to run</span>
+      </div>
+    </div>
+
+    <!-- Right Panel: Output -->
+    <div class="playground-right" id="playground-right">
+      <div class="output-header" id="output-header">
+        <span class="output-title">Output</span>
+        <div class="output-actions">
+          <button class="toolbar-btn" id="clear-output-btn" title="Clear output">Clear</button>
+          <button class="toolbar-btn" id="copy-output-btn" title="Copy output">📋 Copy</button>
+        </div>
+      </div>
+      <div class="output-area" id="output-area">
+        <div class="output-welcome" id="output-welcome">
+          <div class="welcome-icon">🚀</div>
+          <h3>Ready to run</h3>
+          <p>Write LALA code and click <strong>Run</strong> or press <kbd>Ctrl+Enter</kbd></p>
+          <p class="welcome-hint">The playground simulates LALA execution right in your browser.</p>
+        </div>
+      </div>
+
+      <!-- Examples panel -->
+      <div class="playground-examples" id="playground-examples">
+        <div class="examples-header">
+          <span>Quick Snippets</span>
+        </div>
+        <div class="examples-list" id="examples-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/global.js"></script>
+  <script src="js/playground.js"></script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LALA Showcase — Projects Built with LALA</title>
+  <meta name="description" content="Browse projects built by the LALA community. Upload your own LALA project and share it with the world." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/showcase.css" />
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><div class="logo-mark">L</div><span class="logo-text">LALA</span><span class="logo-version">v1.0</span></a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html" class="nav-link" id="nav-home">Home</a>
+        <a href="how-it-works.html" class="nav-link" id="nav-how">How It Works</a>
+        <a href="starter-guide.html" class="nav-link" id="nav-starter">Get Started</a>
+        <a href="playground.html" class="nav-link" id="nav-play">Playground</a>
+        <a href="showcase.html" class="nav-link active" id="nav-showcase">Showcase</a>
+        <a href="community.html" class="nav-link" id="nav-community">Community</a>
+      </div>
+      <div class="nav-actions">
+        <button class="btn btn-primary btn-sm" id="submit-project-btn" onclick="openModal('submit-modal')">+ Submit Project</button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero" id="page-hero">
+    <div class="container">
+      <div class="page-hero-content">
+        <div class="section-eyebrow">Community Showcase</div>
+        <h1>Projects Built with LALA</h1>
+        <p>See what developers from around the world are building with LALA. Share your own project and inspire others.</p>
+        <div class="showcase-hero-actions">
+          <button class="btn btn-primary btn-lg" id="hero-submit-btn" onclick="openModal('submit-modal')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Submit Your Project
+          </button>
+          <div class="showcase-stats" id="showcase-stats">
+            <span class="sc-stat"><strong id="total-projects">—</strong> projects</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <section class="showcase-filters-bar" id="showcase-filters-bar">
+    <div class="container">
+      <div class="filters-row">
+        <div class="filter-group" id="filter-group">
+          <button class="filter-btn active" data-dialect="all" id="filter-all">All</button>
+          <button class="filter-btn" data-dialect="english" id="filter-english">🇬🇧 English</button>
+          <button class="filter-btn" data-dialect="yoruba" id="filter-yoruba">Yorùbá</button>
+          <button class="filter-btn" data-dialect="hausa" id="filter-hausa">Hausa</button>
+          <button class="filter-btn" data-dialect="igbo" id="filter-igbo">Igbo</button>
+          <button class="filter-btn" data-dialect="mixed" id="filter-mixed">Mixed</button>
+        </div>
+        <div class="sort-group">
+          <select class="sort-select" id="sort-select">
+            <option value="newest">Newest First</option>
+            <option value="popular">Most Liked</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Grid -->
+  <section class="showcase-main" id="showcase-main">
+    <div class="container">
+      <div class="projects-grid" id="projects-grid"></div>
+      <div class="pagination" id="projects-pagination"></div>
+    </div>
+  </section>
+
+  <!-- Submit Project Modal -->
+  <div class="modal-overlay" id="submit-modal">
+    <div class="modal" id="submit-modal-inner">
+      <div class="modal-header">
+        <h2 class="modal-title">Submit Your LALA Project</h2>
+        <button class="modal-close" onclick="closeModal('submit-modal')" id="submit-modal-close">✕</button>
+      </div>
+      <form id="submit-project-form" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="proj-title">Project Title *</label>
+          <input class="form-input" id="proj-title" type="text" placeholder="e.g. Naira Budget Tracker" maxlength="100" required />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="proj-author">Your Name *</label>
+            <input class="form-input" id="proj-author" type="text" placeholder="e.g. Emeka Okonkwo" maxlength="80" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="proj-dialect">Primary Dialect *</label>
+            <select class="form-select" id="proj-dialect">
+              <option value="english">English</option>
+              <option value="yoruba">Yorùbá</option>
+              <option value="hausa">Hausa</option>
+              <option value="igbo">Igbo</option>
+              <option value="mixed">Mixed Dialects</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="proj-description">Description *</label>
+          <textarea class="form-textarea" id="proj-description" placeholder="What does your project do? What LALA features did you use?" maxlength="2000" rows="4" required></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="proj-github">GitHub URL</label>
+            <input class="form-input" id="proj-github" type="url" placeholder="https://github.com/user/repo" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="proj-live">Live URL</label>
+            <input class="form-input" id="proj-live" type="url" placeholder="https://myproject.example.com" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="proj-tags">Tags (comma-separated)</label>
+          <input class="form-input" id="proj-tags" type="text" placeholder="e.g. cli, web, data-science, fintech" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Screenshot (optional)</label>
+          <div class="file-upload-area" id="proj-upload-area">
+            <div class="upload-icon">📷</div>
+            <p>Click or drag & drop an image</p>
+            <span class="upload-hint">PNG, JPG, WebP — max 5MB</span>
+          </div>
+          <input type="file" id="proj-screenshot" accept="image/*" style="display:none" />
+          <div id="proj-screenshot-preview"></div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost" onclick="closeModal('submit-modal')" id="cancel-submit-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="submit-form-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Submit Project
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Project Detail Modal -->
+  <div class="modal-overlay" id="project-detail-modal">
+    <div class="modal modal-lg" id="project-detail-inner">
+      <div class="modal-header">
+        <h2 class="modal-title" id="detail-title">Project</h2>
+        <button class="modal-close" onclick="closeModal('project-detail-modal')" id="detail-close-btn">✕</button>
+      </div>
+      <div class="project-detail-body" id="project-detail-body"></div>
+    </div>
+  </div>
+
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="index.html" class="nav-logo"><div class="logo-mark">L</div><span class="logo-text">LALA</span></a><p>Empowering polyglot indigenous computing.</p></div>
+        <div class="footer-col"><h4>Learn</h4><a href="how-it-works.html">How It Works</a><a href="starter-guide.html">Starter Guide</a><a href="playground.html">Playground</a></div>
+        <div class="footer-col"><h4>Community</h4><a href="showcase.html">Showcase</a><a href="community.html">Community</a></div>
+        <div class="footer-col"><h4>Download</h4><a href="index.html#downloads">All Platforms</a></div>
+      </div>
+      <div class="footer-bottom"><p>© 2024 LALA Programming Language.</p><p>Built with ❤️ for African developers.</p></div>
+    </div>
+  </footer>
+
+  <script src="js/global.js"></script>
+  <script src="js/showcase.js"></script>
+</body>
+</html>

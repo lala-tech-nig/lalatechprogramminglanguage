@@ -1,0 +1,43 @@
+// Ihe Nlereanya 4: Asụsụ Igbo (Wazobia Native Dialect)
+// Ide koodu kọmputa n'asụsụ Igbo anyị
+
+dee("╔═══════════════════════════════════════════════════════╗")
+dee("║           MMEMME ASỤSỤ IGBO NA WAZOBIA                ║")
+dee("╚═══════════════════════════════════════════════════════╝")
+
+// Ndị Na-agbanwe agbanwe (Variables)
+ka onye_ahia = "Emeka Okonkwo"
+ka ego_ahia = 50000
+ka debanyere_aha = eziokwu
+
+oburu (ego_ahia >= 20000 na debanyere_aha == eziokwu) {
+    dee("Daalụ, " + onye_ahia + "! Azụmahịa gị tozuru oke.")
+} ozor {
+    dee("Biko deba aha gị n'akwụkwọ tupu ị gaa n'ihu.")
+}
+
+// Loop 'maka' (For Loops)
+dee("\n--- Loop 'maka' (1 ruo 5) ---")
+maka i nime 1..5 {
+    oburu (i % 2 != 0 na abughi (i == 1)) {
+        dee("Nọmba pụrụ iche: " + i)
+    }
+}
+
+// Ọrụ (Functions)
+oru mụbaa_ego(ego, ọnụọgụ) {
+    ka ngụkọta = ego * ọnụọgụ
+    lota ngụkọta
+}
+
+ka ego_ngụkọta = mụbaa_ego(1200, 4)
+dee("Ọnụ ego niile bụ: ₦" + ego_ngụkọta)
+
+// Nwaa na Nwute (Try-Catch Error Handling)
+nwaa {
+    dee("Anyị na-anwa ime atụmatụ dị mkpa...")
+} nwute (mmejọ) {
+    dee("Mmejọ mere: " + mmejọ)
+} na_ikpeazu {
+    dee("Emela atụmatụ ahụ nke ọma!")
+}

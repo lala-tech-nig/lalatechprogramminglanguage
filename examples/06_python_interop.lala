@@ -1,0 +1,30 @@
+// Example 6: Seamless Python 3.14 Interoperability in Wazobia
+// Access Python standard libraries, data science packages, and eval directly
+
+print("╔═══════════════════════════════════════════════════════╗")
+print("║         PYTHON 3.14 INTEROPERABILITY IN WAZOBIA       ║")
+print("╚═══════════════════════════════════════════════════════╝")
+
+// 1. Importing Python Standard Modules
+import py "math" as pymath
+let pySqrt = pymath.sqrt(1024)
+print("Python math.sqrt(1024):", pySqrt)
+
+let pySin = pymath.sin(1.57079632679)
+print("Python math.sin(pi/2):", pySin)
+
+let pyPower = pymath.pow(3, 4)
+print("Python math.pow(3, 4):", pyPower)
+
+// 2. Python Dynamic Evaluation (e.g. List comprehensions, generators)
+let pyListComprehension = py.eval("[n ** 2 for n in range(1, 8)]")
+print("Python List Comprehension [n**2]:", pyListComprehension)
+
+let pyDictResult = py.eval("{ 'lang': 'Wazobia', 'version': '1.0.0', 'dialects': ['yo', 'ha', 'ig', 'en'] }")
+print("Python Dictionary Result:", pyDictResult)
+
+// 3. Python Multiline Execution
+let pyExecOutput = py.exec("total = sum([10, 20, 30, 40]); message = f'Calculated sum is {total}'")
+print("Python exec scope output:", pyExecOutput)
+
+print("✔ Python Interoperability verification complete!")

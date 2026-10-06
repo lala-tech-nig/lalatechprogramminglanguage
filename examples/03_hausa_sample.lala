@@ -1,0 +1,43 @@
+// Misali 3: Harshen Hausa (Wazobia Native Dialect)
+// Rubuta shirye-shiryen kwamfuta a cikin harshen Hausa
+
+buga("╔═══════════════════════════════════════════════════════╗")
+buga("║           SHIRIN HARSHEN HAUSA A WAZOBIA              ║")
+buga("╚═══════════════════════════════════════════════════════╝")
+
+// Masu Sauyi (Variables)
+bari suna = "Amina Bello"
+bari kudi = 15000
+bari mai_aiki = gaskiya
+
+idan (kudi > 10000 da mai_aiki == gaskiya) {
+    buga("Sannu da aiki, " + suna + "! Asusunka yana da kyau.")
+} kuma {
+    buga("Asusunka yana bukatar kulawa.")
+}
+
+// Madauki 'don' (For Loops)
+buga("\n--- Madauki 'don' (1 zuwa 5) ---")
+don lamba cikin 1..5 {
+    idan (lamba == 3 ko lamba == 5) {
+        buga("Mun zabi lamba ta musamman: " + lamba)
+    }
+}
+
+// Aiki (Functions)
+aiki tara_lamba(a, b) {
+    bari jimla = a + b
+    koma jimla
+}
+
+bari sakamako = tara_lamba(45, 55)
+buga("Jimlar lambobi 45 da 55 ita ce: " + sakamako)
+
+// Gwada da Kama (Try-Catch Error Handling)
+gwada {
+    buga("Muna gwada aiki cikin nasara...")
+} kama (kuskure) {
+    buga("An sami matsala: " + kuskure)
+} a_karshe {
+    buga("Aiki ya kammala lafiya lau!")
+}

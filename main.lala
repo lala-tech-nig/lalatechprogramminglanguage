@@ -1,0 +1,32 @@
+// Eto Ibẹrẹ Wazobia (Èdè Yorùbá)
+// 1. Awọn Oniyipada ati Awọn Iṣiro (Variables & Logic)
+je oruko = "Oluko"
+je ojo_ori = 25
+je oye = otito
+
+ti (ojo_ori >= 18 ati oye == otito) {
+    te("Kaabo, " + oruko + "! O ni anfani lati wole.")
+} bikose {
+    te("E ma binu, o ko le wole.")
+}
+
+// 2. Lupu 'fun' (for loop) ati 'ati' / 'tabi' / 'ko'
+te("--- Ise Lupu 'fun' ---")
+fun i ninu 1..5 {
+    ti (i % 2 == 0 ati ko (i == 4)) {
+        te("Nomba paapaa ti a fẹ: " + i)
+    }
+}
+
+// 3. Ibaraenisọrọ pẹlu JavaScript (JS Interoperability)
+je js_akoko = js.Date.now()
+te("Akoko JS Lọwọlọwọ: " + js_akoko)
+je gbongbo_144 = js.Math.sqrt(144)
+te("Gbọngbọ Onigun 144 lati JS: " + gbongbo_144)
+
+// 4. Ibaraenisọrọ pẹlu Python 3.14 (Python Interoperability)
+je py_math = py.import("math")
+je py_pi = py_math.pi
+te("Pi lati Python: " + py_pi)
+je py_isin = py_math.sin(1.5707963)
+te("Sin(pi/2) lati Python: " + py_isin)

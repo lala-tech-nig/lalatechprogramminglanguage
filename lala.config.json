@@ -1,0 +1,12 @@
+{
+  "name": "lala-project",
+  "version": "1.0.0",
+  "language": "lala",
+  "fileExtension": ".lala",
+  "dialect": "yo",
+  "dialectName": "Yorùbá",
+  "interop": {
+    "javascript": true,
+    "python": true
+  }
+}

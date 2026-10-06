@@ -1,0 +1,42 @@
+// Example 1: For Loops and Logical Operators (and / or / not) in Wazobia
+
+print("=== 1. FOR RANGE LOOP ===")
+let sum = 0
+for i in 1..5 {
+    print("Loop iteration i =", i)
+    sum += i
+}
+print("Sum of 1 to 5:", sum)
+
+print("\n=== 2. FOR COLLECTION LOOP ===")
+let fruits = ["Agbalumo", "Ogede", "Kankana", "Mangoro"]
+for fruit in fruits {
+    print("Found delicious fruit:", fruit)
+}
+
+print("\n=== 3. C-STYLE FOR LOOP ===")
+for (let j = 10; j > 0; j -= 3) {
+    print("Countdown step:", j)
+}
+
+print("\n=== 4. LOGICAL OPERATORS: and, or, not ===")
+let isSunny = true
+let isRaining = false
+let temperature = 32
+
+if (isSunny and not isRaining) {
+    print("Condition passed: It is sunny and NOT raining!")
+}
+
+if (isRaining or temperature > 30) {
+    print("Condition passed: Either it is raining OR temperature is hot (>30)!")
+}
+
+let checkShortCircuit = false and (10 / 0 == 0) // Should short-circuit safely!
+print("Short-circuit AND evaluated safely to:", checkShortCircuit)
+
+let orShortCircuit = true or (10 / 0 == 0) // Should short-circuit safely!
+print("Short-circuit OR evaluated safely to:", orShortCircuit)
+
+let complexLogic = (not false) and (10 > 5 or 2 == 3)
+print("Complex logic evaluated to:", complexLogic)
