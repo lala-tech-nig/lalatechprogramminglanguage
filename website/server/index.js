@@ -8,7 +8,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:3000','https://lalatechprogramminglanguage-client.vercel.app/how-it-works.html', 'http://127.0.0.1:3000', 'http://localhost:5500', 'http://127.0.0.1:5500'],
+  origin: ['http://localhost:3000','https://lalatechprogramminglanguage-client.vercel.app', 'http://127.0.0.1:3000', 'http://localhost:5500', 'http://127.0.0.1:5500'],
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
