@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>LALA IDE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <link rel="stylesheet" href="css/code-editor.css"/>
+</head>
+<body class="vscode-ide">
+<!-- TITLEBAR -->
+<div class="ide-titlebar" id="ide-titlebar">
+  <div class="titlebar-left">
+    <a href="index.html" class="titlebar-logo"><div class="tl-mark">L</div><span class="tl-brand">LALA IDE</span></a>
+    <nav class="menubar" id="menubar">
+      <div class="mb-item" tabindex="0">File<div class="mb-dropdown">
+        <div class="mb-row" id="m-new-file"><span>New File</span><kbd>Ctrl+N</kbd></div>
+        <div class="mb-row" id="m-open-file"><span>Open File</span><kbd>Ctrl+O</kbd></div>
+        <div class="mb-sep"></div>
+        <div class="mb-row" id="m-save"><span>Save</span><kbd>Ctrl+S</kbd></div>
+        <div class="mb-row" id="m-save-all"><span>Save All</span></div>
+        <div class="mb-sep"></div>
+        <div class="mb-row" id="m-download-file"><span>Download File</span></div>
+        <div class="mb-row" id="m-download-zip"><span>Download Project as ZIP</span></div>
+        <div class="mb-row" id="m-extract-zip"><span>Extract ZIP</span></div>
+        <div class="mb-sep"></div>
+        <div class="mb-row" id="m-sync-cloud"><span>&#x2601; Sync to Cloud</span></div>
+      </div></div>
+      <div class="mb-item" tabindex="0">Edit<div class="mb-dropdown">
+        <div class="mb-row" id="m-find"><span>Find</span><kbd>Ctrl+F</kbd></div>
+        <div class="mb-row" id="m-replace"><span>Replace</span><kbd>Ctrl+H</kbd></div>
+        <div class="mb-sep"></div>
+        <div class="mb-row" id="m-toggle-comment"><span>Toggle Comment</span><kbd>Ctrl+/</kbd></div>
+        <div class="mb-row" id="m-format-doc"><span>Format Document</span><kbd>Alt+Shift+F</kbd></div>
+      </div></div>
+      <div class="mb-item" tabindex="0">View<div class="mb-dropdown">
+        <div class="mb-row" id="m-toggle-sidebar"><span>Toggle Sidebar</span><kbd>Ctrl+B</kbd></div>
+        <div class="mb-row" id="m-toggle-panel"><span>Toggle Panel</span><kbd>Ctrl+J</kbd></div>
+        <div class="mb-row" id="m-toggle-minimap"><span>Toggle Minimap</span></div>
+        <div class="mb-sep"></div>
+        <div class="mb-row" id="m-zoom-in"><span>Zoom In</span><kbd>Ctrl+=</kbd></div>
+        <div class="mb-row" id="m-zoom-out"><span>Zoom Out</span><kbd>Ctrl+-</kbd></div>
+      </div></div>
+      <div class="mb-item" tabindex="0">Run<div class="mb-dropdown">
+        <div class="mb-row" id="m-run-code"><span>&#x25B6; Run File</span><kbd>Ctrl+Enter</kbd></div>
+        <div class="mb-row" id="m-run-web"><span>&#x1F310; Web Preview</span></div>
+        <div class="mb-sep"></div>
+        <div class="mb-row" id="m-clear-output"><span>Clear Output</span></div>
+      </div></div>
+    </nav>
+  </div>
+  <div class="titlebar-center">
+    <div class="tc-path"><span class="tcp-part" id="tc-project">Untitled Project</span><svg class="tcp-sep" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" fill="none"/></svg><span class="tcp-part tcp-file" id="tc-file">Welcome</span></div>
+  </div>
+  <div class="titlebar-right">
+    <div class="tb-dialect-pill" id="tb-dialect-pill" style="display:none">
+      <span id="tb-dialect-label">&#x1F30D; English</span>
+      <div class="tb-dialect-dd" id="tb-dialect-dd">
+        <div class="tdd-item" data-dialect="english">&#x1F30D; English</div>
+        <div class="tdd-item" data-dialect="yoruba">&#x1F1F3;&#x1F1EC; Yoruba</div>
+        <div class="tdd-item" data-dialect="hausa">&#x1F1F3;&#x1F1EC; Hausa</div>
+        <div class="tdd-item" data-dialect="igbo">&#x1F1F3;&#x1F1EC; Igbo</div>
+      </div>
+    </div>
+    <button class="tb-run-btn" id="tb-run-btn">&#x25B6; Run</button>
+    <div class="tb-sep"></div>
+    <div id="tb-auth-out"><button class="tb-auth-btn" id="tb-signin-btn">Sign In</button></div>
+    <div id="tb-auth-in" style="display:none">
+      <div class="tb-avatar-wrap">
+        <button class="tb-avatar-btn" id="tb-avatar-btn"><div class="tb-avatar" id="tb-avatar">?</div><span id="tb-username">User</span></button>
+        <div class="tb-user-dd" id="tb-user-dd">
+          <div class="tbud-info"><div class="tbud-name" id="tbud-name">--</div><div class="tbud-email" id="tbud-email">--</div></div>
+          <div class="mb-sep"></div>
+          <div class="tb-user-row" id="m-my-projects">&#x2601; My Cloud Projects</div>
+          <div class="tb-user-row" id="m-sync-now">&#x1F504; Sync Now</div>
+          <div class="mb-sep"></div>
+          <div class="tb-user-row danger" id="m-signout">Sign Out</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- BODY -->
+<div class="ide-body" id="ide-body">
+  <!-- ACTIVITY BAR -->
+  <div class="ide-actbar" id="ide-actbar">
+    <div class="ab-top">
+      <button class="ab-btn active" data-panel="explorer" id="ab-explorer" title="Explorer">
+        <svg viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z" fill="currentColor"/></svg>
+      </button>
+      <button class="ab-btn" data-panel="search" id="ab-search" title="Search">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/></svg>
+      </button>
+      <button class="ab-btn" data-panel="snippets" id="ab-snippets" title="Snippets">
+        <svg viewBox="0 0 24 24"><path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5a2.5 2.5 0 0 0-5 0V5H4c-1.1 0-2 .9-2 2v3.8h1.5c1.5 0 2.7 1.2 2.7 2.7S5 16.2 3.5 16.2H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.5 1.2-2.7 2.7-2.7s2.7 1.2 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5a2.5 2.5 0 0 0 0-5z" fill="currentColor"/></svg>
+      </button>
+    </div>
+    <div class="ab-bottom">
+      <button class="ab-btn" id="ab-account" title="Account"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z" fill="currentColor"/></svg></button>
+      <button class="ab-btn" id="ab-settings" title="Settings"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94s-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" fill="currentColor"/></svg></button>
+    </div>
+  </div>
+  <!-- SIDEBAR -->
+  <div class="ide-sidebar" id="ide-sidebar">
+    <div class="sb-panel active" id="sb-panel-explorer">
+      <div class="sb-panel-header">
+        <span class="sb-panel-title">EXPLORER</span>
+        <div class="sb-panel-actions">
+          <button class="sb-hbtn" id="sb-new-file" title="New File"><svg viewBox="0 0 16 16"><path d="M9.5 1.1l3.4 3.5.1.4v2h-1V5H9V2H3v11h4v1H2.5l-.5-.5v-12l.5-.5h6.7l.3.1zM10 2v2h1.9L10 2zM14 10h2v1h-2v2h-1v-2h-2v-1h2V8h1v2z" fill="currentColor"/></svg></button>
+          <button class="sb-hbtn" id="sb-collapse-all" title="Collapse"><svg viewBox="0 0 16 16"><path d="M4 14l4-4 4 4M4 6l4-4 4 4" stroke="currentColor" stroke-width="1.3" fill="none"/></svg></button>
+        </div>
+      </div>
+      <div class="sb-project-label" id="sb-project-toggle">
+        <svg class="sb-chev open" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.3" fill="none"/></svg>
+        <svg class="sb-folder-ico" viewBox="0 0 16 16"><path d="M1.5 14h13l.5-.5v-10l-.5-.5H7.71l-.85-1H1.5l-.5.5v11l.5.5zM2 4h4.29l.85 1H14v8H2V4z" fill="#dcb67a"/></svg>
+        <span class="sb-proj-name" id="sb-proj-name">MY-PROJECT</span>
+      </div>
+      <div class="sb-file-tree" id="sb-file-tree"></div>
+      <button class="sb-add-btn" id="sb-add-file-btn">+ New File</button>
+    </div>
+    <div class="sb-panel" id="sb-panel-search">
+      <div class="sb-panel-header"><span class="sb-panel-title">SEARCH</span></div>
+      <div class="sb-search-wrap">
+        <input class="sb-search-input" id="sb-search-input" placeholder="Search in files..."/>
+        <div class="sb-search-results" id="sb-search-results"></div>
+      </div>
+    </div>
+    <div class="sb-panel" id="sb-panel-snippets">
+      <div class="sb-panel-header"><span class="sb-panel-title">SNIPPETS</span></div>
+      <select class="sb-snip-lang" id="sb-snip-lang"><option value="all">All</option><option value="lala">LALA</option><option value="javascript">JavaScript</option><option value="python">Python</option><option value="html">HTML</option><option value="css">CSS</option></select>
+      <div class="sb-file-tree" id="sb-snip-list"></div>
+    </div>
+  </div>
+  <div class="sb-resize" id="sb-resize"></div>
+  <!-- MAIN -->
+  <div class="ide-main" id="ide-main">
+    <div class="ide-tabbar" id="ide-tabbar"><div class="ide-tabs" id="ide-tabs"></div></div>
+    <div class="ide-breadcrumb" id="ide-breadcrumb">
+      <span class="bc-seg" id="bc-root">workspace</span>
+      <svg class="bc-sep" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      <span class="bc-seg bc-active" id="bc-file">Welcome</span>
+      <div class="bc-lang" id="bc-lang">LALA</div>
+    </div>
+    <div class="ide-view" id="ide-view">
+      <!-- Welcome -->
+      <div class="ide-welcome" id="ide-welcome">
+        <div class="wlc-brand"><div class="wlc-logo">L</div><div><div class="wlc-name">LALA IDE</div><div class="wlc-sub">Version 2.0</div></div></div>
+        <div class="wlc-grid">
+          <div class="wlc-col"><div class="wlc-col-hdr">Start</div>
+            <button class="wlc-link" id="wl-new-lala">&#x1F30D; New LALA File</button>
+            <button class="wlc-link" id="wl-new-js">&#x1F7E8; New JavaScript File</button>
+            <button class="wlc-link" id="wl-new-py">&#x1F40D; New Python File</button>
+            <button class="wlc-link" id="wl-new-html">&#x1F310; New Web App</button>
+            <button class="wlc-link" id="wl-open">&#x1F4C2; Open File</button>
+            <button class="wlc-link" id="wl-extract-zip">&#x1F4E6; Extract ZIP</button>
+          </div>
+          <div class="wlc-col"><div class="wlc-col-hdr">Recent</div><div id="wlc-recent"><div class="wlc-empty">No recent files</div></div></div>
+          <div class="wlc-col"><div class="wlc-col-hdr">Cloud Projects</div>
+            <div id="wlc-cloud"><div class="wlc-empty">Sign in to load cloud projects</div></div>
+            <button class="wlc-cta" id="wl-signin-btn">Sign In / Create Account</button>
+          </div>
+        </div>
+        <div class="wlc-shortcuts">
+          <div class="wlc-sc"><kbd>Ctrl+N</kbd> New File</div>
+          <div class="wlc-sc"><kbd>Ctrl+Enter</kbd> Run</div>
+          <div class="wlc-sc"><kbd>Ctrl+F</kbd> Find</div>
+          <div class="wlc-sc"><kbd>Ctrl+/</kbd> Comment</div>
+          <div class="wlc-sc"><kbd>Alt+Shift+F</kbd> Format</div>
+          <div class="wlc-sc"><kbd>Ctrl+B</kbd> Sidebar</div>
+        </div>
+      </div>
+      <!-- Editor -->
+      <div class="ide-editor-wrap" id="ide-editor-wrap" style="display:none">
+        <div class="ide-gutter" id="ide-gutter"></div>
+        <div class="ide-code-scroll" id="ide-code-scroll">
+          <div class="ide-code-inner" id="ide-code-inner">
+            <pre class="ide-highlight" id="ide-highlight" aria-hidden="true"></pre>
+            <textarea class="ide-textarea" id="ide-textarea" spellcheck="false" autocorrect="off" autocapitalize="off" autocomplete="off"></textarea>
+            <div class="ide-intellisense" id="ide-intellisense"></div>
+            <div class="ide-find-bar" id="ide-find-bar">
+              <div class="fb-inputs">
+                <div class="fb-row"><input class="fb-input" id="fb-find" placeholder="Find"/><span class="fb-count" id="fb-count">0/0</span></div>
+                <div class="fb-row"><input class="fb-input" id="fb-replace" placeholder="Replace (optional)"/></div>
+              </div>
+              <div class="fb-btns">
+                <button class="fb-btn" id="fb-case" title="Match Case">Aa</button>
+                <button class="fb-btn" id="fb-word" title="Whole Word">ab|</button>
+                <button class="fb-btn" id="fb-regex" title="Regex">.*</button>
+                <div class="fb-sep"></div>
+                <button class="fb-btn" id="fb-prev">&#x2191;</button>
+                <button class="fb-btn" id="fb-next">&#x2193;</button>
+                <button class="fb-btn" id="fb-rep-one">Replace</button>
+                <button class="fb-btn" id="fb-rep-all">All</button>
+                <button class="fb-close" id="fb-close">&#x2715;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <canvas class="ide-minimap" id="ide-minimap"></canvas>
+      </div>
+    </div>
+    <div class="panel-resize-handle" id="panel-resize-handle"></div>
+    <div class="ide-panel" id="ide-panel" style="height:210px">
+      <div class="panel-tabs-bar">
+        <button class="ptab active" data-ptab="terminal" id="ptab-terminal">TERMINAL</button>
+        <button class="ptab" data-ptab="output" id="ptab-output">OUTPUT</button>
+        <button class="ptab" data-ptab="webview" id="ptab-webview">WEB PREVIEW</button>
+        <button class="ptab" data-ptab="problems" id="ptab-problems">PROBLEMS</button>
+        <div class="ptab-spacer"></div>
+        <button class="ph-btn" id="ph-clear" title="Clear">&#x2715;</button>
+        <button class="ph-btn" id="ph-toggle" title="Toggle">&#x2193;</button>
+      </div>
+      <div class="pbody active" id="pbody-terminal">
+        <div class="term-out" id="term-out"></div>
+        <div class="term-in-row"><span class="term-prompt">lala@ide:~/workspace$</span><input class="term-input" id="term-input" autocomplete="off" spellcheck="false"/></div>
+      </div>
+      <div class="pbody" id="pbody-output"><div class="term-out" id="run-output"></div></div>
+      <div class="pbody" id="pbody-webview">
+        <div class="wv-bar"><button class="wv-btn" id="wv-run">&#x25B6; Run</button><button class="wv-btn" id="wv-reload">&#x21BA;</button><div class="wv-url" id="wv-url">about:blank</div><button class="wv-btn" id="wv-popout">&#x2197; Open</button></div>
+        <iframe id="web-frame" sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-popups"></iframe>
+      </div>
+      <div class="pbody" id="pbody-problems"><div class="term-out" id="problems-list"><div class="no-problems">&#x2713; No problems detected</div></div></div>
+    </div>
+  </div>
+</div>
+<!-- STATUS BAR -->
+<div class="ide-statusbar" id="ide-statusbar">
+  <div class="sb-left">
+    <div class="sbi sbi-branch">&#x238F; main</div>
+    <div class="sbi"><span id="err-count">0</span> errors</div>
+    <div class="sbi"><span id="warn-count">0</span> warnings</div>
+  </div>
+  <div class="sb-right">
+    <div class="sbi" id="sbi-cursor">Ln 1, Col 1</div>
+    <div class="sbi" id="sbi-indent">Spaces: 2</div>
+    <div class="sbi" id="sbi-encoding">UTF-8</div>
+    <div class="sbi sbi-lang" id="sbi-lang">LALA</div>
+    <div class="sbi sbi-sync"><span id="sync-text">Not synced</span></div>
+  </div>
+</div>
+<!-- MODALS -->
+<div class="modal-overlay" id="auth-overlay">
+  <div class="auth-card">
+    <button class="auth-close" id="auth-close">&#x2715;</button>
+    <div class="auth-tabs"><button class="auth-tab active" id="atab-in">Sign In</button><button class="auth-tab" id="atab-up">Create Account</button></div>
+    <div class="auth-form active" id="aform-in">
+      <div class="auth-logo-wrap"><div class="auth-logo">L</div></div>
+      <h2 class="auth-heading">Welcome back</h2>
+      <p class="auth-sub">Sign in to sync your projects across devices</p>
+      <div class="af-field"><label>Email</label><input type="email" id="si-email" placeholder="you@example.com" class="af-input"/></div>
+      <div class="af-field"><label>Password</label><div class="af-pw-wrap"><input type="password" id="si-pw" placeholder="Password" class="af-input"/><button class="af-eye" id="si-eye" type="button">&#x1F441;</button></div></div>
+      <div class="af-error" id="si-error"></div>
+      <button class="af-submit" id="btn-si">Sign In</button>
+
+      <div class="af-switch">No account? <button id="sw-to-up">Create one</button></div>
+    </div>
+    <div class="auth-form" id="aform-up">
+      <div class="auth-logo-wrap"><div class="auth-logo">L</div></div>
+      <h2 class="auth-heading">Create account</h2>
+      <p class="auth-sub">Start coding with free cloud sync</p>
+      <div class="af-field"><label>Display Name</label><input type="text" id="su-name" placeholder="Your name" class="af-input"/></div>
+      <div class="af-field"><label>Email</label><input type="email" id="su-email" placeholder="you@example.com" class="af-input"/></div>
+      <div class="af-field"><label>Password</label><div class="af-pw-wrap"><input type="password" id="su-pw" placeholder="Min. 6 chars" class="af-input"/><button class="af-eye" id="su-eye" type="button">&#x1F441;</button></div><div class="pw-bar"><div class="pw-fill" id="pw-fill"></div></div><div class="pw-label" id="pw-label"></div></div>
+      <div class="af-error" id="su-error"></div>
+      <button class="af-submit" id="btn-su">Create Account</button>
+
+      <div class="af-switch">Have an account? <button id="sw-to-in">Sign in</button></div>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="nf-overlay">
+  <div class="nf-modal">
+    <div class="nf-header">New File</div>
+    <div class="nf-field"><label class="nf-label">File Name</label><input class="nf-input" id="nf-name" placeholder="e.g. main.lala"/></div>
+    <div class="nf-field"><label class="nf-label">Language</label><select class="nf-select" id="nf-lang"><option value="lala">&#x1F30D; LALA (.lala)</option><option value="javascript">&#x1F7E8; JavaScript (.js)</option><option value="python">&#x1F40D; Python (.py)</option><option value="html">&#x1F310; HTML (.html)</option><option value="css">&#x1F3A8; CSS (.css)</option><option value="json">&#x1F4CB; JSON (.json)</option><option value="text">&#x1F4C4; Text (.txt)</option></select></div>
+    <div class="nf-actions"><button class="nf-btn" id="nf-cancel">Cancel</button><button class="nf-btn primary" id="nf-create">Create</button></div>
+  </div>
+</div>
+<div class="ctx-menu" id="ctx-menu">
+  <div class="ctx-item" id="ctx-open">Open</div>
+  <div class="ctx-item" id="ctx-rename">Rename</div>
+  <div class="ctx-item" id="ctx-download">Download</div>
+  <div class="ctx-sep"></div>
+  <div class="ctx-item ctx-danger" id="ctx-delete">Delete</div>
+</div>
+<div class="toast-area" id="toast-area"></div>
+<input type="file" id="open-file-input" style="display:none" multiple accept=".lala,.js,.py,.html,.css,.json,.txt,.zip,.md"/>
+<input type="file" id="zip-extract-input" style="display:none" accept=".zip"/>
+<script>window.API_BASE = "http://localhost:5000/api";</script>
+<script src="js/playground.js"></script>
+<script src="js/code-editor.js"></script>
+</body>
+</html>
